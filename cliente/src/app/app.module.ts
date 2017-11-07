@@ -27,6 +27,8 @@ import { ViewprojectComponent } from './Components/project/viewproject/viewproje
 import { MappingComponent } from './Components/project/viewproject/mapping/mapping.component';
 import { GoalcostComponent } from './Components/project/viewproject/goalcost/goalcost.component';
 import { NfrrelevantComponent } from './Components/project/viewproject/nfrrelevant/nfrrelevant.component';
+import { LoginComponent } from './Components/login/login.component';
+import { UserComponent } from './Components/admin/user/user.component';
 
 import { AddstakeComponent } from './Components/project/editproject/stakeholder/addstake/addstake.component';
 import { EditstakeComponent } from './Components/project/editproject/stakeholder/editstake/editstake.component';
@@ -50,6 +52,8 @@ import { AddareComponent } from './Components/admin/areas/addare/addare.componen
 import { EditareComponent } from './Components/admin/areas/editare/editare.component';
 import { AddadmnfComponent } from './Components/admin/adminnfr/addadmnf/addadmnf.component';
 import { EditadmnfComponent } from './Components/admin/adminnfr/editadmnf/editadmnf.component';
+import { AdduserComponent } from './Components/admin/user/adduser/adduser.component';
+import { EdituserComponent } from './Components/admin/user/edituser/edituser.component';
 
 
 
@@ -78,7 +82,6 @@ import { SoftgoalnfrService } from './Services/softgoalnfr.service';
 import { StakeholderService } from './Services/stakeholder.service';
 import { UserService } from './Services/user.service';
 import { routing, appRoutingProviders } from './Routes/router.module';
-import { LoginComponent } from './Components/login/login.component';
 
 
 
@@ -126,7 +129,10 @@ import { LoginComponent } from './Components/login/login.component';
     EditareComponent,
     AddadmnfComponent,
     EditadmnfComponent,
-    LoginComponent
+    LoginComponent,
+    UserComponent,
+    AdduserComponent,
+    EdituserComponent
   ],
 
     entryComponents:
@@ -152,7 +158,9 @@ import { LoginComponent } from './Components/login/login.component';
     AddareComponent,
     EditareComponent,
     AddadmnfComponent,
-    EditadmnfComponent
+    EditadmnfComponent,
+    AdduserComponent,
+    EdituserComponent
   ],
 
   imports: [
