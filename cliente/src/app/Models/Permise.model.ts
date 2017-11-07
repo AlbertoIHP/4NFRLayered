@@ -12,9 +12,9 @@ export class Permise {
     this.id = 0
     this.roles_id = ''
     this.functionalities_id = ''
-    this.write = '0'
-    this.erase = '0'
-    this.update = '0'
-    this.view = '0'
+    this.write = 0
+    this.erase = 0
+    this.update = 0
+    this.view = 0
   }
 }
