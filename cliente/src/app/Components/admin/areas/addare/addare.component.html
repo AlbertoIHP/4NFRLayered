@@ -1,0 +1,45 @@
+<mat-horizontal-stepper [linear]="true">
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Nombre</ng-template>
+
+        <label for="name">Ingrese un nombre para la nueva Area</label>
+        <input matInput placeholder="" formControlName="firstCtrl" required id="name" [(ngModel)]="newArea.name" (ngModelChange)="checkName()">
+
+      <div>
+        <button mat-button matStepperNext style="width: 100%" disabled="{{goDescription}}">Siguiente<mat-icon>arrow_forward</mat-icon></button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Descripcion</ng-template>
+
+
+      <div class="row">
+        <div class="col s12">
+        <label for="des">Ingrese un descripcion para la nueva Area</label>
+        <input matInput placeholder="" formControlName="secondCtrl" required id="des" [(ngModel)]="newArea.description" (ngModelChange)="checkDescription()">
+        </div>
+      </div>
+
+
+
+
+      <div class="row">
+        <div class="col s6">
+          <button mat-button matStepperPrevious style="width: 100%"><mat-icon>arrow_back</mat-icon>Volver</button>
+        </div>
+
+        <div class="col s6">
+          <button mat-button (click)="addArea()" style="width: 100%" disabled="{{finish}}">Agregar<mat-icon>add</mat-icon></button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+
+
+
+</mat-horizontal-stepper>

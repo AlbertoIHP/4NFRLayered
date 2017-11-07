@@ -1,0 +1,52 @@
+[
+    {
+        "name": "id",
+        "dbType": "integer,true",
+        "htmlType": null,
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "name",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,goals"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Permission"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,projects"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,softgoals"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,softgoalsnfrs"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,stakeholders"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,users"
+    }
+]

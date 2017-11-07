@@ -1,0 +1,14 @@
+.example-icon {
+  padding: 0 0;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.userInfo
+{
+    position: absolute;
+    left: 22px;
+    top: 58px;
+}

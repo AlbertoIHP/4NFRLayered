@@ -1,0 +1,5 @@
+server/vendor
+server/composer.lock
+cliente/package-lock.json
+cliente/e2e
+cliente/node_modules

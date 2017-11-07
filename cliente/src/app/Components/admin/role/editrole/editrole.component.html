@@ -1,0 +1,56 @@
+<h1 mat-dialog-title style="text-align: center;">Edición de Role</h1>
+
+<div mat-dialog-content>
+  <div class="row">
+    <div class="col s12">
+      <p>Nombre </p>
+      <input matInput tabindex="1" [(ngModel)]="role.name">
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col s12">
+
+
+      <table class="striped">
+        <thead>
+          <tr>
+              <th>Funciones</th>
+              <th>Permisos</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr  *ngFor="let permiso of totalPM">
+            <td> {{permiso.functionalities_id}}</td>
+            <td>
+            <div class="row">
+
+              <div class="col s3"><mat-checkbox [(ngModel)]="permiso.write">Escritura </mat-checkbox></div>
+              <div class="col s3"><mat-checkbox [(ngModel)]="permiso.view" >Lectura</mat-checkbox></div>
+              <div class="col s3"><mat-checkbox [(ngModel)]="permiso.update">Edicion</mat-checkbox></div>
+              <div class="col s3"><mat-checkbox [(ngModel)]="permiso.erase" >Borrado</mat-checkbox></div>
+            </div>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+
+
+
+</div>
+
+
+<div class="row">
+  <div class="col s12">
+    <button mat-button style="width: 100%" (click)="editarRole()" >Actualizar Role</button>
+  </div>
+
+
+</div>

@@ -1,0 +1,55 @@
+import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
+import { AuthenticationService } from './authentication.service';
+import { Softgoal } from '../Models/Softgoal.model';
+
+
+@Injectable()
+export class SoftgoalService {
+  public base: string = "http://localhost:8000/api/v1/softgoals/";
+  public options: RequestOptions;
+  public headers: Headers;
+
+  constructor(private http: Http, private authenticationService: AuthenticationService)
+  {
+    this.headers = new Headers(
+    {
+      'Authorization': 'Bearer ' + this.authenticationService.token,
+      'Content-Type': 'application/json'
+    });
+
+    this.options = new RequestOptions({ headers: this.headers });
+
+
+  }
+
+  getSoftgoals(): Observable<Softgoal[]>
+  {
+    return this.http.get(this.base, this.options).map((res: Response) => res.json());
+  }
+
+  registerSoftgoal(soft : Softgoal)
+  {
+    return this.http.post( this.base, JSON.stringify(soft ), this.options).map((res: Response) => res.json());
+
+  }
+
+  getSoftgoal(id) : Observable<Softgoal>
+  {
+    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+  }
+
+  editSoftgoal(soft : Softgoal, id: number)
+  {
+    return this.http.put(this.base+id, JSON.stringify(soft ), this.options).map((res: Response) => res.json());
+  }
+
+  deleteSoftgoal(id) {
+    return this.http.delete(this.base+id, this.options).map((res: Response) => res.json());
+  }
+
+
+}
+

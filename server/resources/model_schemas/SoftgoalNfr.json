@@ -1,0 +1,89 @@
+[
+    {
+        "name": "id",
+        "dbType": "integer,true",
+        "htmlType": null,
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "softgoals_id",
+        "dbType": "integer,false",
+        "htmlType": null,
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "nfrs_id",
+        "dbType": "integer,false",
+        "htmlType": null,
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "date",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "time",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,Nfr"
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,Softgoal"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,goals"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,permissions"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,projects"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,softgoals"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,stakeholders"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,users"
+    }
+]
