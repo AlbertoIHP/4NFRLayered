@@ -96,10 +96,15 @@ export class buscadorPorNombre extends DataSource<any> {
 
 
         //Esto debe cambiar para este proyecto
-        if(this.filtro === "nfr" || this.filtro === "area" || this.filtro === "categories")
+        if(this.filtro === "nfr" || this.filtro === "area" || this.filtro === "categories" || this.filtro === 'role')
         {
            let searchStr = (item.name ).toLowerCase();
-        return searchStr.indexOf(this.filter.toLowerCase()) != -1;
+           return searchStr.indexOf(this.filter.toLowerCase()) != -1;
+        }
+        else if(this.filtro === 'user')
+        {
+           let searchStr = (item.email ).toLowerCase();
+           return searchStr.indexOf(this.filter.toLowerCase()) != -1;
         }
 
 

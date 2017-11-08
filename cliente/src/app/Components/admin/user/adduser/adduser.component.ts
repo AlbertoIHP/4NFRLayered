@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
+import { EventService } from '../../../../Services/events.service'
 
 @Component({
   selector: 'app-adduser',
@@ -22,7 +23,8 @@ export class AdduserComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AdduserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public events: EventService
     )
   {
     this.goDescription = true
@@ -39,7 +41,7 @@ export class AdduserComponent implements OnInit {
   {
     console.log(this.newUser)
     this.userService.registerUser(this.newUser).subscribe(data => {
-
+      this.events.singUp(this.newUser)
     })
   }
 

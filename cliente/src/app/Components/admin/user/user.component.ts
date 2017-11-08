@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, Inject, OnInit } from '@angular/core'
+import { Component, ElementRef, ViewChild, Inject, OnInit, OnChanges } from '@angular/core'
 
 import { Profession } from '../../../Models/Profession.model'
 import { ProfessionService } from '../../../Services/profession.service'
@@ -8,6 +8,11 @@ import { UserService } from '../../../Services/user.service'
 
 import { Role } from '../../../Models/Role.model'
 import { RoleService } from '../../../Services/role.service'
+
+
+import { EventService } from '../../../Services/events.service'
+
+
 
 import { AdduserComponent } from './adduser/adduser.component'
 import { EdituserComponent } from './edituser/edituser.component'
@@ -34,7 +39,7 @@ import { ExampleDatabase, dataTable, buscadorPorNombre } from '../../constants/c
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnChanges {
   public totalUsers: User[]
   public totalRoles: Role[]
   public totalProfessions: Profession[]
@@ -46,7 +51,7 @@ export class UserComponent implements OnInit {
   public sourcePorNombre: buscadorPorNombre | null
   public bdEstructura
 
-  displayedColumns = ['Acciones', 'Nombre', 'Correo', 'Password', 'Profesion', 'Rol']
+  displayedColumns = ['Acciones', 'Nombre', 'Correo', 'Profesion', 'Rol']
   public searchByName: boolean;
 
 
@@ -55,9 +60,15 @@ export class UserComponent implements OnInit {
     public dialog: MatDialog,
     public professionService: ProfessionService,
     public userService: UserService,
-    public roleService: RoleService
+    public roleService: RoleService,
+    public events: EventService
     )
   {
+
+    this.events.openUser.subscribe( data => {
+      this.openAddModal()
+    })
+
     this.searchByName = false
     this.totalProfessions = []
     this.totalRoles = []
@@ -108,7 +119,7 @@ export class UserComponent implements OnInit {
       //Datatables
       this.bdEstructura = new ExampleDatabase(this.totalUsers );
       this.sourceDatatable = new dataTable(this.bdEstructura, this.paginator);
-      this.sourcePorNombre = new buscadorPorNombre(this.bdEstructura, 'area');
+      this.sourcePorNombre = new buscadorPorNombre(this.bdEstructura, 'user');
       Observable.fromEvent(this.filter.nativeElement, 'keyup')
           .debounceTime(150)
           .distinctUntilChanged()
@@ -184,6 +195,13 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("Hola me inicie soy usuario")
+  }
+
+  ngOnChanges()
+  {
+    console.log("algo cambiops")
+
   }
 
 }

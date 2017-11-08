@@ -24,6 +24,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { ExampleDatabase, dataTable, buscadorPorNombre } from '../../constants/constants';
 
 
+import { EventService } from '../../../Services/events.service'
 
 
 @Component({
@@ -50,8 +51,14 @@ export class AdminnfrComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
     public categoryService: CategoryService,
-    public nfrService: NfrService)
+    public nfrService: NfrService,
+    public events: EventService
+    )
   {
+    this.events.openNfr.subscribe( data => {
+      this.openAddModal()
+    })
+
     this.searchByName = false
     this.totalNfrs = []
     this.totalCategories = []

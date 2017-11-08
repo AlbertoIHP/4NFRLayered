@@ -6,6 +6,9 @@ import { RoleService } from '../../../Services/role.service';
 import { AddroleComponent } from './addrole/addrole.component';
 import { EditroleComponent } from './editrole/editrole.component';
 
+import { EventService } from '../../../Services/events.service';
+
+
 import {DataSource} from '@angular/cdk/collections';
 import {MatPaginator} from '@angular/material';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
@@ -40,8 +43,13 @@ public totalRoles: Role[];
   displayedColumns = ['Acciones', 'Nombre'];
 
 
-  constructor (public servicioRole: RoleService, public dialog: MatDialog)
+  constructor ( public events: EventService, public servicioRole: RoleService, public dialog: MatDialog)
   {
+
+    this.events.openRole.subscribe( data => {
+      this.agregacionRole()
+    })
+
     this.buscarPorNombre = false;
     this.totalRoles = [];
     this.actualizarRoles();
@@ -59,7 +67,7 @@ public totalRoles: Role[];
       //DATATABLE
       this.bdEstructura = new ExampleDatabase(this.totalRoles );
       this.sourceDatatable = new dataTable(this.bdEstructura, this.paginator);
-      this.sourcePorNombre = new buscadorPorNombre(this.bdEstructura, 'Role');
+      this.sourcePorNombre = new buscadorPorNombre(this.bdEstructura, 'role');
       Observable.fromEvent(this.filter.nativeElement, 'keyup')
           .debounceTime(150)
           .distinctUntilChanged()

@@ -6,11 +6,62 @@ export class EventService {
     public isSingOut: any
     public isSingUp: any
 
+    //Eventos para las TAB de Admin
+    public openUser: any
+    public openRole: any
+    public openNfr: any
+    public openArea: any
+    public openCategory: any
+    public openProfession: any
+    public openRelevance:any
+
 
     constructor() {
         this.isSingIn = new EventEmitter()
         this.isSingOut = new EventEmitter()
         this.isSingUp = new EventEmitter()
+        this.openUser = new EventEmitter()
+        this.openRole = new EventEmitter()
+        this.openNfr = new EventEmitter()
+        this.openArea = new EventEmitter()
+        this.openCategory = new EventEmitter()
+        this.openProfession = new EventEmitter()
+        this.openRelevance = new EventEmitter()
+
+
+
+    }
+
+    public openAddModal(index)
+    {
+      if( index === 0 )
+      {
+        this.openUser.emit()
+      }
+      else if( index === 1 )
+      {
+        this.openRole.emit()
+      }
+      else if( index === 2 )
+      {
+        this.openNfr.emit()
+      }
+      else if( index === 3 )
+      {
+        this.openArea.emit()
+      }
+      else if( index === 4 )
+      {
+        this.openCategory.emit()
+      }
+      else if( index === 5 )
+      {
+        this.openProfession.emit()
+      }
+      else if( index === 6 )
+      {
+        this.openRelevance.emit()
+      }
     }
 
 
@@ -28,4 +79,7 @@ export class EventService {
     {
       this.isSingUp.emit(newUser)
     }
+
+
+
 }

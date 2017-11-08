@@ -22,6 +22,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { ExampleDatabase, dataTable, buscadorPorNombre } from '../../constants/constants';
 
 
+import { EventService } from '../../../Services/events.service'
 
 
 @Component({
@@ -44,9 +45,14 @@ export class CategoriesComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public categoryService: CategoryService
+    public categoryService: CategoryService,
+    public events: EventService
     )
   {
+    this.events.openCategory.subscribe( data => {
+      this.openAddModal()
+    })
+
     this.searchByName = false
     this.totalCategories = []
     this.getCategories()

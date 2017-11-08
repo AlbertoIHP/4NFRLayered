@@ -21,7 +21,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 import { ExampleDatabase, dataTable, buscadorPorNombre } from '../../constants/constants';
 
-
+import { EventService } from '../../../Services/events.service'
 
 
 
@@ -46,9 +46,13 @@ export class AreasComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public areaService: AreaService
+    public areaService: AreaService,
+    public events: EventService
     )
   {
+    this.events.openArea.subscribe( data => {
+      this.openAddModal()
+    })
     this.searchByName = false
     this.totalAreas = []
     this.getAreas()

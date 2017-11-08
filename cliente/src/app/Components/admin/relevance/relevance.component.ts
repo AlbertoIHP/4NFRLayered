@@ -6,6 +6,10 @@ import { RelevanceService } from '../../../Services/relevance.service'
 import { AddrelComponent } from './addrel/addrel.component'
 import { EditrelComponent } from './editrel/editrel.component'
 
+import { EventService } from '../../../Services/events.service'
+
+
+
 //Datatable
 import {DataSource} from '@angular/cdk/collections';
 import {MatPaginator} from '@angular/material';
@@ -45,9 +49,15 @@ export class RelevanceComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public relevanceService: RelevanceService
+    public relevanceService: RelevanceService,
+    public events: EventService
     )
   {
+
+    this.events.openRelevance.subscribe( data => {
+      this.openAddModal()
+    })
+
     this.searchByName = false
     this.totalRelevances = []
     this.getRelevances()

@@ -1,5 +1,6 @@
 
   <mat-sidenav-container >
+
     <mat-sidenav #sidenav mode="push" >
       <mat-card class="example-card" style="max-width: 300px">
         <img mat-card-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYdL5s7c9KVWeb-SPatQ0exo0Jfs2LVbRVyAHLY7b_yChamTKWAg" alt="Photo of a Shiba Inu">
@@ -19,8 +20,9 @@
 
       </mat-card>
     </mat-sidenav>
+
     <div class="my-content">
-       <mat-toolbar color="primary">
+       <mat-toolbar color="primary" *ngIf="isLogeado">
 
         <mat-toolbar-row>
           <mat-icon class="example-icon" style="margin-right: 10px" (click)="sidenav.open()">menu</mat-icon>

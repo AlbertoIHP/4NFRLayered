@@ -5,6 +5,7 @@ import { ProfessionService } from '../../../Services/profession.service'
 
 import { AddprofComponent } from './addprof/addprof.component'
 import { EditprofComponent } from './editprof/editprof.component'
+import { EventService } from '../../../Services/events.service'
 
 //Datatable
 import {DataSource} from '@angular/cdk/collections';
@@ -48,9 +49,14 @@ export class ProfessionComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public professionService: ProfessionService
+    public professionService: ProfessionService,
+    public events: EventService
     )
   {
+    this.events.openProfession.subscribe( data => {
+      this.openAddModal()
+    })
+
     this.searchByName = false
     this.totalProfessions = []
     this.getProfessions()
