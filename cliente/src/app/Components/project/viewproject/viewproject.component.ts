@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-viewproject',
   templateUrl: './viewproject.component.html',
@@ -7,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewprojectComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router)
+  {
+    if(localStorage.getItem('currentUser'))
+    {
+
+    }
+    else
+    {
+      this.router.navigate(['login'])
+    }
+  }
 
   ngOnInit() {
   }

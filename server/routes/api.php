@@ -19,8 +19,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group(['middleware' => ['cors','jwt.auth']], function(){
-
-
+	Route::resource('v1/projects', 'ProjectAPIController');
+	Route::resource('v1/stakeholders', 'StakeholderAPIController');
+	Route::resource('v1/goals', 'GoalAPIController');
+	Route::resource('v1/softgoals', 'SoftgoalAPIController');
+	Route::resource('v1/softgoalNfrs', 'SoftgoalNfrAPIController');
+	Route::resource('v1/categories', 'CategoryAPIController');
+	Route::resource('v1/relevances', 'RelevanceAPIController');
+	Route::resource('v1/nfrs', 'NfrAPIController');
+	Route::resource('v1/functionalities', 'FunctionalityAPIController');
+	Route::resource('v1/areas', 'AreaAPIController');
+	Route::resource('v1/permises', 'PermiseAPIController');	
 });
 
 Route::group(['middleware' => ['cors']], function(){
@@ -33,33 +42,9 @@ Route::group(['middleware' => ['cors']], function(){
 
 
   	//Provisorio durante desarrollo
-	Route::resource('v1/nfrs', 'NfrAPIController');
-
-	Route::resource('v1/relevances', 'RelevanceAPIController');
-
-	Route::resource('v1/professions', 'ProfessionAPIController');
-
-	Route::resource('v1/areas', 'AreaAPIController');
-
-	Route::resource('v1/roles', 'RoleAPIController');
-
-	Route::resource('v1/functionalities', 'FunctionalityAPIController');
-
-	Route::resource('v1/permises', 'PermiseAPIController');
-
 	Route::resource('v1/users', 'UserAPIController');
-
-	Route::resource('v1/projects', 'ProjectAPIController');
-
-	Route::resource('v1/stakeholders', 'StakeholderAPIController');
-
-	Route::resource('v1/goals', 'GoalAPIController');
-
-	Route::resource('v1/softgoals', 'SoftgoalAPIController');
-
-	Route::resource('v1/softgoalNfrs', 'SoftgoalNfrAPIController');
-
-	Route::resource('v1/categories', 'CategoryAPIController');
+	Route::resource('v1/roles', 'RoleAPIController');
+	Route::resource('v1/professions', 'ProfessionAPIController');
 
 });
 

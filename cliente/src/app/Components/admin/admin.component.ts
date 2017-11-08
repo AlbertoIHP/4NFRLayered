@@ -17,7 +17,17 @@ export class AdminComponent implements OnInit {
     private events: EventService
     )
   {
-    this.currentTab = 0
+
+
+    if(localStorage.getItem('currentUser'))
+    {
+      this.currentTab = 0
+    }
+    else
+    {
+      this.router.navigate(['login'])
+    }
+
   }
 
   ngOnInit()

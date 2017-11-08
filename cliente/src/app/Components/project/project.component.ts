@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router, ActivatedRoute } from '@angular/router';
+
+
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -7,7 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router)
+  {
+    if(localStorage.getItem('currentUser'))
+    {
+
+    }
+    else
+    {
+      this.router.navigate(['login'])
+    }
+  }
 
   ngOnInit() {
   }
