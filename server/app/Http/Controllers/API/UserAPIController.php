@@ -117,7 +117,7 @@ public function store(Request $request){
     $input = $request->all();
 
     $rules = [
-      'email' => 'required|unique:users',
+      'email' => 'required',
       'password' => 'required',
     ];
 
@@ -262,6 +262,7 @@ public function store(Request $request){
     public function update($id, UpdateUserAPIRequest $request)
     {
         $input = $request->all();
+        $input['password'] = bcrypt($request->password);
 
         /** @var User $user */
         $user = $this->userRepository->findWithoutFail($id);

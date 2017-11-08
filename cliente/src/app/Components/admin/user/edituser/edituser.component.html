@@ -1,3 +1,86 @@
-<p>
-  edituser works!
-</p>
+
+<mat-horizontal-stepper [linear]="false">
+
+  <mat-step >
+      <ng-template matStepLabel>Informacion personal</ng-template>
+
+      <div class="row">
+        <div class="col s4">
+          <label for="name">Nombre completo</label>
+          <input id="name" type="text" matInput  [(ngModel)]="newUser.name"  (ngModelChange)="checkName()">
+        </div>
+
+        <div class="col s4">
+          <label for="correo">Correo </label>
+          <input id="correo" type="email" disabled="true" matInput [(ngModel)]="newUser.email" (ngModelChange)="checkName()">
+        </div>
+
+        <div class="col s4">
+          <label for="pass">Contraseña</label>
+          <input id="pass" type="password" matInput [(ngModel)]="newUser.password" (ngModelChange)="checkName()">
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="row">
+      <div class="col s12">
+         <button mat-button matStepperNext disabled="{{goDescription}}" style="width: 100%">Siguiente <mat-icon>arrow_forward</mat-icon> </button>
+      </div>
+
+      </div>
+  </mat-step>
+
+
+
+  <mat-step >
+      <ng-template matStepLabel>Permisos de Sistema</ng-template>
+
+      <div class="row">
+        <div class="col s6">
+          <mat-form-field style="width: 100%">
+            <mat-select placeholder="Rol de usario" [(ngModel)]="newUser.roles_id" (ngModelChange)="checkDescription()" style="width: 100%">
+              <mat-option *ngFor="let rol of totalRoles" [value]="rol.id" style="width: 100%">
+                {{ rol.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col s6">
+          <mat-form-field style="width: 100%">
+            <mat-select  placeholder="Profesion" [(ngModel)]="newUser.professions_id" (ngModelChange)="checkDescription()" style="width: 100%">
+              <mat-option *ngFor="let profession of totalProfessions" [value]="profession.id" style="width: 100%">
+                {{ profession.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+      <div class="col s6">
+        <button mat-button matStepperPrevious style="width: 100%"><mat-icon>arrow_back</mat-icon>Back</button>
+      </div>
+      <div class="col s6">
+        <button mat-button matStepperNext disabled="{{finish}}" style="width: 100%" (click)="addUser()">Actualizar <mat-icon>refresh</mat-icon></button>
+      </div>
+
+
+      </div>
+  </mat-step>
+
+
+
+  <mat-step>
+    <ng-template matStepLabel>Confirmacion de correo</ng-template>
+    Edicion finalizada.
+    <div class="row">
+    <div class="col s12">
+      <button mat-button matStepperPrevious style="width: 100%" (click)="onNoClick()">Finalizar</button>
+    </div>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

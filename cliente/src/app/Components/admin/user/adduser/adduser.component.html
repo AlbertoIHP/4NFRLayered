@@ -1,3 +1,90 @@
-<p>
-  adduser works!
-</p>
+
+<mat-horizontal-stepper [linear]="true">
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Informacion personal</ng-template>
+
+      <div class="row">
+        <div class="col s4">
+          <label for="name">Nombre completo</label>
+          <input id="name" type="text" matInput formControlName="firstCtrl" required [(ngModel)]="newUser.name"  (ngModelChange)="checkName()">
+        </div>
+
+        <div class="col s4">
+          <label for="correo">Correo </label>
+          <input id="correo" type="email" matInput formControlName="firstCtrl" required [(ngModel)]="newUser.email" (ngModelChange)="checkName()">
+        </div>
+
+        <div class="col s4">
+          <label for="pass">Contraseña</label>
+          <input id="pass" type="password" matInput formControlName="firstCtrl" required [(ngModel)]="newUser.password" (ngModelChange)="checkName()">
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="row">
+      <div class="col s12">
+         <button mat-button matStepperNext disabled="{{goDescription}}" style="width: 100%">Siguiente <mat-icon>arrow_forward</mat-icon> </button>
+      </div>
+
+      </div>
+    </form>
+  </mat-step>
+
+
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Permisos de Sistema</ng-template>
+
+      <div class="row">
+        <div class="col s6">
+          <mat-form-field style="width: 100%">
+            <mat-select formControlName="secondCtrl" required  placeholder="Rol de usario" [(ngModel)]="newUser.roles_id" (ngModelChange)="checkDescription()" style="width: 100%">
+              <mat-option *ngFor="let rol of totalRoles" [value]="rol.id" style="width: 100%">
+                {{ rol.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col s6">
+          <mat-form-field style="width: 100%">
+            <mat-select formControlName="secondCtrl" required placeholder="Profesion" [(ngModel)]="newUser.professions_id" (ngModelChange)="checkDescription()" style="width: 100%">
+              <mat-option *ngFor="let profession of totalProfessions" [value]="profession.id" style="width: 100%">
+                {{ profession.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+      <div class="col s6">
+        <button mat-button matStepperPrevious style="width: 100%"><mat-icon>arrow_back</mat-icon>Back</button>
+      </div>
+      <div class="col s6">
+        <button mat-button matStepperNext disabled="{{finish}}" style="width: 100%" (click)="addUser()">Agregar <mat-icon>add</mat-icon></button>
+      </div>
+
+
+      </div>
+    </form>
+  </mat-step>
+
+
+
+  <mat-step>
+    <ng-template matStepLabel>Confirmacion de correo</ng-template>
+    Un correo ha sido enviado a la direccion de correo electronico {{this.newUser.email}}, para poder hacer uso de la plataforma es necesario confirmar dicho correo.
+    <div class="row">
+    <div class="col s12">
+      <button mat-button matStepperPrevious style="width: 100%" (click)="onNoClick()">Finalizar</button>
+    </div>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

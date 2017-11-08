@@ -64,7 +64,9 @@ class User extends Authenticatable
         'email',
         'password',
         'professions_id',
-        'roles_id'
+        'roles_id',
+        'confirmation_code',
+        'confirmed'
     ];
 
     /**
