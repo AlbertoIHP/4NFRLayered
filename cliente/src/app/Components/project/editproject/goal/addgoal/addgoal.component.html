@@ -48,7 +48,7 @@
         <div class="col s12">
 
           <mat-form-field style="width: 100%">
-            <mat-select placeholder="Profesion del stakeholder" formControlName="secondCtrl" required [(ngModel)]="newGoal.relevances_id" (ngModelChange)="checkSigthInfo()" >
+            <mat-select placeholder="Relevancia del Goal" formControlName="secondCtrl" required [(ngModel)]="newGoal.relevances_id" (ngModelChange)="checkSigthInfo()" >
               <mat-option *ngFor="let relevance of totalRelevances" [value]="relevance.id">
                 {{ relevance.name }}
               </mat-option>
