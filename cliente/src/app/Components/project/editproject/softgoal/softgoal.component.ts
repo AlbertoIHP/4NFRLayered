@@ -47,6 +47,11 @@ export class SoftgoalComponent implements OnInit {
   public totalSoftgoals: Softgoal[]
   public userInfo: any
   public projectInfo: any
+  public checkEvent: any
+
+
+
+
 
   //DATATABLE
   @ViewChild(MatPaginator) paginator: MatPaginator
@@ -69,7 +74,17 @@ export class SoftgoalComponent implements OnInit {
     private softgoalService: SoftgoalService
     )
   {
-    this.events.openSoft.subscribe( data => {
+
+    this.events.adminHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+    this.events.projectHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+
+    this.checkEvent = this.events.openSoft.subscribe( data => {
       this.openAddModal()
     })
 

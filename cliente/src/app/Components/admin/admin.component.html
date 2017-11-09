@@ -1,38 +1,45 @@
-<mat-tab-group #group (selectedTabChange)="changeTab(group)" >
-
-  <mat-tab label="Usuarios"  >
-    <app-user></app-user>
-  </mat-tab>
-
-  <mat-tab label="Roles de Usuarios"  >
-    <app-role></app-role>
-  </mat-tab>
-
-  <mat-tab label="Non Functional Requirement"  >
-    <app-adminnfr></app-adminnfr>
-  </mat-tab>
-
-  <mat-tab label="Areas de Proyectos"  >
-    <app-areas></app-areas>
-  </mat-tab>
-
-  <mat-tab label="Categorias de NFR"  >
-    <app-categories></app-categories>
-  </mat-tab>
-
-  <mat-tab label="Profesiones de Stakeholders"  >
-    <app-profession></app-profession>
-  </mat-tab>
+<div *ngIf="alive">
 
 
-  <mat-tab label="Relevancia (Softgoals y Goals)"  >
-    <app-relevance></app-relevance>
-  </mat-tab>
+  <mat-tab-group #group (selectedTabChange)="changeTab(group)" >
 
-</mat-tab-group>
+    <mat-tab label="Usuarios"  >
+      <app-user *ngIf="alive" ></app-user>
+    </mat-tab>
 
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large blue" (click)="openAddModal()">
-    <i class="large material-icons">add</i>
-  </a>
+    <mat-tab label="Roles de Usuarios"  >
+      <app-role ></app-role>
+    </mat-tab>
+
+    <mat-tab label="Non Functional Requirement"  >
+      <app-adminnfr ></app-adminnfr>
+    </mat-tab>
+
+    <mat-tab label="Areas de Proyectos"  >
+      <app-areas ></app-areas>
+    </mat-tab>
+
+    <mat-tab label="Categorias de NFR"  >
+      <app-categories ></app-categories>
+    </mat-tab>
+
+    <mat-tab label="Profesiones de Stakeholders"  >
+      <app-profession ></app-profession>
+    </mat-tab>
+
+
+    <mat-tab label="Relevancia (Softgoals y Goals)"  >
+      <app-relevance ></app-relevance>
+    </mat-tab>
+
+  </mat-tab-group>
+
+  <div class="fixed-action-btn" >
+    <a class="btn-floating btn-large blue" (click)="openAddModal()">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
+
 </div>
+
+

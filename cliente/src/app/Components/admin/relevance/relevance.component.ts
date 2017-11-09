@@ -44,8 +44,8 @@ export class RelevanceComponent implements OnInit {
   public bdEstructura
 
   displayedColumns = ['Acciones', 'Nombre', 'Descripcion', 'Peso']
-  public searchByName: boolean;
-
+  public searchByName: boolean
+  public checkEvent: any
 
   constructor(
     public dialog: MatDialog,
@@ -54,7 +54,15 @@ export class RelevanceComponent implements OnInit {
     )
   {
 
-    this.events.openRelevance.subscribe( data => {
+    this.events.projectHasClicked.subscribe( data => {
+      this.checkEvent.unsubscribe()
+    })
+
+    this.events.editProjectHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+    this.checkEvent = this.events.openRelevance.subscribe( data => {
       this.openAddModal()
     })
 

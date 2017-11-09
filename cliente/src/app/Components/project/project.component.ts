@@ -54,17 +54,30 @@ export class ProjectComponent implements OnInit {
   displayedColumns = ['Acciones', 'Nombre', 'Descripcion', 'Area', 'Creacion', 'Deadline']
   public searchByName: boolean;
   public userInfo
+  public alive: boolean
 
 
   constructor(
     public dialog: MatDialog,
     private router: Router,
     private projectService: ProjectService,
-    private areaService: AreaService)
+    private areaService: AreaService,
+    private events: EventService)
   {
+    this.alive = true
+
+    this.events.clickProject()
 
     if(localStorage.getItem('currentUser'))
     {
+      this.events.adminHasClicked.subscribe( data => {
+        this.alive = false
+      })
+
+      this.events.editProjectHasClicked.subscribe( data => {
+        this.alive = false
+      })
+
       this.searchByName = false
       this.totalAreas = []
       this.totalProjects = []
@@ -144,6 +157,7 @@ export class ProjectComponent implements OnInit {
 
   goEdit(project)
   {
+    this.events.clickEditProject()
     localStorage.setItem('currentProject', JSON.stringify(project))
     this.router.navigate(['edit'])
   }

@@ -39,6 +39,9 @@ export class StakeholderComponent implements OnInit {
   public totalProfessions: Profession[]
   public userInfo: any
   public projectInfo: any
+  public checkEvent: any
+
+
 
   //DATATABLE
   @ViewChild(MatPaginator) paginator: MatPaginator
@@ -58,7 +61,16 @@ export class StakeholderComponent implements OnInit {
     private stakeholderService: StakeholderService
     )
   {
-    this.events.openStake.subscribe( data => {
+
+    this.events.adminHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+    this.events.projectHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+    this.checkEvent = this.events.openStake.subscribe( data => {
       this.openAddModal()
     })
 

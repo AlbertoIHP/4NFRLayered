@@ -53,7 +53,7 @@ export class UserComponent implements OnInit, OnChanges {
 
   displayedColumns = ['Acciones', 'Nombre', 'Correo', 'Profesion', 'Rol']
   public searchByName: boolean;
-
+  public checkEvent: any
 
 
   constructor(
@@ -65,9 +65,18 @@ export class UserComponent implements OnInit, OnChanges {
     )
   {
 
-    this.events.openUser.subscribe( data => {
+    this.checkEvent = this.events.openUser.subscribe( data => {
       this.openAddModal()
     })
+
+    this.events.projectHasClicked.subscribe( data => {
+      this.checkEvent.unsubscribe()
+    })
+
+    this.events.editProjectHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
 
     this.events.hasChanged.subscribe( data => {
       this.getProfessions()

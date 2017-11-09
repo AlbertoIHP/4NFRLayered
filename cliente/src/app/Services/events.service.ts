@@ -21,6 +21,11 @@ export class EventService {
     public openGoal: any
     public openSoft: any
 
+    //Eventos para la destruccion de componentes
+    public adminHasClicked: any
+    public projectHasClicked: any
+    public editProjectHasClicked: any
+
     //Evento global que comunica cambios en la persistencia de los datos
     public hasChanged: any
 
@@ -63,8 +68,25 @@ export class EventService {
         this.openGoal = new EventEmitter()
         this.openSoft = new EventEmitter()
         this.hasChanged = new EventEmitter()
+        this.adminHasClicked = new EventEmitter()
+        this.projectHasClicked = new EventEmitter()
+        this.editProjectHasClicked = new EventEmitter()
 
+    }
 
+    public clickAdmin()
+    {
+      this.adminHasClicked.emit()
+    }
+
+    public clickEditProject()
+    {
+      this.editProjectHasClicked.emit()
+    }
+
+    public clickProject()
+    {
+      this.projectHasClicked.emit()
     }
 
     public reportChange()

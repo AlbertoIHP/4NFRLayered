@@ -1,4 +1,6 @@
- <div class="row">
+<div *ngIf="alive">
+
+ <div class="row" >
   <div class="col s1" >
   <input (click)="changeSearch()" type="checkbox" id="test5" />
   <label for="test5" class="selectRaro"></label>
@@ -11,7 +13,7 @@
 </div>
 
 
-<div class="example-container mat-elevation-z8">
+<div class="example-container mat-elevation-z8" >
 
   <mat-table #table *ngIf="!searchByName" [dataSource]="sourceDatatable">
 
@@ -151,8 +153,11 @@
 
 </div>
 
- <div class="fixed-action-btn">
+ <div class="fixed-action-btn" >
     <a class="btn-floating btn-large blue" (click)="openAddModal()">
       <i class="large material-icons">add</i>
     </a>
   </div>
+
+
+</div>

@@ -36,7 +36,7 @@ import { EventService } from '../../../Services/events.service'
 export class AdminnfrComponent implements OnInit {
   public totalCategories: Category[]
   public totalNfrs: Nfr[]
-
+  public checkEvent: any
 
   //DATATABLE
   @ViewChild(MatPaginator) paginator: MatPaginator
@@ -55,8 +55,16 @@ export class AdminnfrComponent implements OnInit {
     public events: EventService
     )
   {
-    this.events.openNfr.subscribe( data => {
+    this.checkEvent = this.events.openNfr.subscribe( data => {
       this.openAddModal()
+    })
+
+    this.events.projectHasClicked.subscribe( data => {
+      this.checkEvent.unsubscribe()
+    })
+
+    this.events.editProjectHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
     })
 
     this.events.hasChanged.subscribe( data => {

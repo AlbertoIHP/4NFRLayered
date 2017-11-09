@@ -39,6 +39,7 @@ export class AreasComponent implements OnInit {
   public sourceDatatable: dataTable | null
   public sourcePorNombre: buscadorPorNombre | null
   public bdEstructura
+  public checkEvent: any
 
   displayedColumns = ['Acciones', 'Nombre', 'Descripcion']
   public searchByName: boolean;
@@ -50,7 +51,17 @@ export class AreasComponent implements OnInit {
     public events: EventService
     )
   {
-    this.events.openArea.subscribe( data => {
+
+    this.events.projectHasClicked.subscribe( data => {
+      this.checkEvent.unsubscribe()
+    })
+
+    this.events.editProjectHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+
+    this.checkEvent = this.events.openArea.subscribe( data => {
       this.openAddModal()
     })
 

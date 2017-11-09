@@ -8,8 +8,10 @@ import { EventService } from '../../Services/events.service'
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
+
 export class AdminComponent implements OnInit {
   public currentTab: any
+  public alive: boolean
 
   constructor(
     private route: ActivatedRoute,
@@ -17,6 +19,18 @@ export class AdminComponent implements OnInit {
     private events: EventService
     )
   {
+    this.alive = true
+
+    this.events.clickAdmin()
+
+    this.events.projectHasClicked.subscribe( data => {
+      console.log("Se clickeo project")
+      this.alive = false
+    })
+
+      this.events.editProjectHasClicked.subscribe( data => {
+        this.alive = false
+      })
 
 
     if(localStorage.getItem('currentUser'))

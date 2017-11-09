@@ -9,12 +9,23 @@ import { EventService } from '../../../Services/events.service'
 })
 export class EditprojectComponent implements OnInit {
   public currentTab: any
+  public alive: boolean
 
   constructor(private events: EventService, private router: Router)
   {
+    this.events.clickEditProject()
+
     if(localStorage.getItem('currentUser'))
     {
+      this.alive = true
       this.currentTab = 0
+      this.events.adminHasClicked.subscribe( data => {
+        this.alive = false
+      })
+
+      this.events.projectHasClicked.subscribe( data => {
+        this.alive = false
+      })
     }
     else
     {

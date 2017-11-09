@@ -39,6 +39,7 @@ export class CategoriesComponent implements OnInit {
   public sourceDatatable: dataTable | null
   public sourcePorNombre: buscadorPorNombre | null
   public bdEstructura
+  public checkEvent: any
 
   displayedColumns = ['Acciones', 'Nombre']
   public searchByName: boolean;
@@ -49,7 +50,15 @@ export class CategoriesComponent implements OnInit {
     public events: EventService
     )
   {
-    this.events.openCategory.subscribe( data => {
+    this.events.projectHasClicked.subscribe( data => {
+      this.checkEvent.unsubscribe()
+    })
+
+    this.events.editProjectHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+    this.checkEvent = this.events.openCategory.subscribe( data => {
       this.openAddModal()
     })
 

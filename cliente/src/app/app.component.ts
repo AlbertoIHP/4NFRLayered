@@ -25,6 +25,7 @@ export class AppComponent {
   constructor(  public router: Router, public events : EventService)
   {
 
+
     if( localStorage.getItem('currentUser') )
     {
       this.isLogeado = true
@@ -44,10 +45,12 @@ export class AppComponent {
   goProject()
   {
     this.router.navigate([''])
+    this.events.clickProject()
   }
 
   goAdmin()
   {
+    this.events.clickAdmin()
     this.router.navigate(['admin'])
   }
 

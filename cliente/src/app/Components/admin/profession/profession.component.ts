@@ -46,6 +46,7 @@ export class ProfessionComponent implements OnInit {
   displayedColumns = ['Acciones', 'Nombre', 'Descripcion']
   public searchByName: boolean;
 
+  public checkEvent
 
   constructor(
     public dialog: MatDialog,
@@ -53,7 +54,16 @@ export class ProfessionComponent implements OnInit {
     public events: EventService
     )
   {
-    this.events.openProfession.subscribe( data => {
+
+    this.events.projectHasClicked.subscribe( data => {
+      this.checkEvent.unsubscribe()
+    })
+
+    this.events.editProjectHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+    this.checkEvent = this.events.openProfession.subscribe( data => {
       this.openAddModal()
     })
 

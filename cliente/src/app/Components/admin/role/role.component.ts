@@ -31,7 +31,9 @@ import { ExampleDatabase, dataTable, buscadorPorNombre } from '../../constants/c
 })
 export class RoleComponent implements OnInit {
 
-public totalRoles: Role[];
+  public totalRoles: Role[];
+  public checkEvent
+
 
   //DATATABLE
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -45,8 +47,15 @@ public totalRoles: Role[];
 
   constructor ( public events: EventService, public servicioRole: RoleService, public dialog: MatDialog)
   {
+    this.events.projectHasClicked.subscribe( data => {
+      this.checkEvent.unsubscribe()
+    })
 
-    this.events.openRole.subscribe( data => {
+    this.events.editProjectHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+    this.checkEvent = this.events.openRole.subscribe( data => {
       this.agregacionRole()
     })
 

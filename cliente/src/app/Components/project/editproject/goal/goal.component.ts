@@ -42,6 +42,7 @@ export class GoalComponent implements OnInit {
   public totalRelevances: Relevance[]
   public userInfo: any
   public projectInfo: any
+  public checkEvent: any
 
   //DATATABLE
   @ViewChild(MatPaginator) paginator: MatPaginator
@@ -61,7 +62,16 @@ export class GoalComponent implements OnInit {
     private relevanceService: RelevanceService
     )
   {
-    this.events.openGoal.subscribe( data => {
+
+    this.events.adminHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+    this.events.projectHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+    this.checkEvent = this.events.openGoal.subscribe( data => {
       this.openAddModal()
     })
 

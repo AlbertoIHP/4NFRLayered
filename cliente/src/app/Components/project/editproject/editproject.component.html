@@ -1,25 +1,28 @@
-<mat-tab-group #group (selectedTabChange)="changeTab(group)">
+<div *ngIf="alive">
+  <mat-tab-group #group (selectedTabChange)="changeTab(group)">
 
-  <mat-tab label="Stakeholders">
-    <app-stakeholder></app-stakeholder>
-  </mat-tab>
+    <mat-tab label="Stakeholders">
+      <app-stakeholder></app-stakeholder>
+    </mat-tab>
 
-  <mat-tab label="Goals">
-    <app-goal></app-goal>
-  </mat-tab>
+    <mat-tab label="Goals">
+      <app-goal></app-goal>
+    </mat-tab>
 
-  <mat-tab label="Softgoals">
-    <app-softgoal></app-softgoal>
-  </mat-tab>
+    <mat-tab label="Softgoals">
+      <app-softgoal></app-softgoal>
+    </mat-tab>
 
-  <mat-tab label="Non Functional Requirements">
-    <app-nfr></app-nfr>
-  </mat-tab>
+    <mat-tab label="Non Functional Requirements">
+      <app-nfr></app-nfr>
+    </mat-tab>
 
-</mat-tab-group>
+  </mat-tab-group>
 
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large blue" (click)="openAddModal()">
-    <i class="large material-icons">add</i>
-  </a>
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large blue" (click)="openAddModal()">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
 </div>
+

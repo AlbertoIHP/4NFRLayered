@@ -63,7 +63,7 @@ export class NfrComponent implements OnInit {
 
   displayedColumns = ['Acciones', 'Nfr', 'Softgoal', 'Fecha']
   public searchByName: boolean;
-
+  public checkEvent: any
 
 
 
@@ -78,7 +78,16 @@ export class NfrComponent implements OnInit {
     private nfrService: NfrService
     )
   {
-    this.events.openNon.subscribe( data => {
+
+    this.events.adminHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+    this.events.projectHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+    this.checkEvent = this.events.openNon.subscribe( data => {
       this.openAddModal()
     } )
 
