@@ -69,7 +69,7 @@ class Stakeholder extends Model
 
     public $fillable = [
         'name',
-        'decription',
+        'description',
         'function',
         'projects_id',
         'professions_id',

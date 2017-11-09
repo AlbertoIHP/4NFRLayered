@@ -109,7 +109,6 @@ export class RelevanceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.getRelevances();
     });
   }
 
@@ -131,7 +130,6 @@ export class RelevanceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.getRelevances();
     });
   }
 
@@ -139,6 +137,7 @@ export class RelevanceComponent implements OnInit {
   deleteRelevance(pro)
   {
     this.relevanceService.deleteRelevance(pro.id).subscribe( data => {
+      this.events.reportChange()
       this.getRelevances()
     })
   }

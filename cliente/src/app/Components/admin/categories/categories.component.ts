@@ -104,7 +104,6 @@ export class CategoriesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.getCategories();
     });
   }
 
@@ -125,14 +124,14 @@ export class CategoriesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.getCategories();
     });
   }
 
 
-  deleteArea(area)
+  deleteCategory(area)
   {
     this.categoryService.deleteCategory(area.id).subscribe( data => {
+      this.events.reportChange()
       this.getCategories()
     })
   }

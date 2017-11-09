@@ -171,13 +171,9 @@ export class GoalComponent implements OnInit {
       {
        goal: new Goal(),
        goalService: this.goalService,
-       stakeholders: this.totalStakeholders
+       stakeholders: this.totalStakeholders,
+       relevances: this.totalRelevances
       }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-
-      this.getStakeholders();
     });
   }
 
@@ -197,13 +193,9 @@ export class GoalComponent implements OnInit {
       {
        goal: proAux,
        goalService: this.goalService,
-       stakeholders: this.totalStakeholders
+       stakeholders: this.totalStakeholders,
+       relevances: this.totalRelevances
       }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-
-      this.getStakeholders();
     });
   }
 
@@ -211,6 +203,7 @@ export class GoalComponent implements OnInit {
   deleteGoal(pro)
   {
     this.goalService.deleteGoal(pro.id).subscribe( data => {
+      this.events.reportChange()
       this.getStakeholders()
     })
   }

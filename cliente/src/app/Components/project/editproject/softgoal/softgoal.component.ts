@@ -186,6 +186,7 @@ export class SoftgoalComponent implements OnInit {
       var currentRelevance = this.totalRelevances.filter( relevance => relevance.id === parseInt(this.totalSoftgoals[j].relevances_id) )
       this.totalSoftgoals[j].goals_id = currentGoal[0].name
       this.totalSoftgoals[j].relevances_id = currentRelevance[0].name
+    }
 
       //Datatables
       this.bdEstructura = new ExampleDatabase(this.totalSoftgoals );
@@ -199,7 +200,6 @@ export class SoftgoalComponent implements OnInit {
             this.sourcePorNombre.filter = this.filter.nativeElement.value;
           });
 
-    }
   }
 
   openAddModal()
@@ -216,10 +216,7 @@ export class SoftgoalComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
 
-      this.getStakeholders();
-    });
   }
 
 
@@ -245,16 +242,13 @@ export class SoftgoalComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-
-      this.getStakeholders();
-    });
   }
 
 
   deleteSoftgoal(pro)
   {
     this.softgoalService.deleteSoftgoal(pro.id).subscribe( data => {
+      this.events.reportChange()
       this.getStakeholders()
     })
   }

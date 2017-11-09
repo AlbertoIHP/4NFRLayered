@@ -135,19 +135,17 @@ export class StakeholderComponent implements OnInit {
 
   openAddModal()
   {
+
+    var stakeholder = new Stakeholder()
+    stakeholder.projects_id = this.projectInfo.id.toString()
     let dialogRef = this.dialog.open(AddstakeComponent, {
       width: '1000px',
       data:
       {
-       stakeholder: new Stakeholder(),
+       stakeholder: stakeholder,
        stakeholderService: this.stakeholderService,
        professions: this.totalProfessions
       }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-
-      this.getProfessions();
     });
   }
 
@@ -169,17 +167,13 @@ export class StakeholderComponent implements OnInit {
        professions: this.totalProfessions
       }
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-
-      this.getProfessions();
-    });
   }
 
 
   deleteStakeholder(pro)
   {
     this.stakeholderService.deleteStakeholder(pro.id).subscribe( data => {
+      this.events.reportChange()
       this.getProfessions()
     })
   }

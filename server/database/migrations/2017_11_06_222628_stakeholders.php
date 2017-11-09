@@ -16,6 +16,7 @@ class Stakeholders extends Migration
         Schema::create('stakeholders', function (Blueprint $table) {
         $table->increments('id');
         $table->string('name');
+        $table->string('function');
         $table->string('description');
         $table->string('time');
         $table->string('date');

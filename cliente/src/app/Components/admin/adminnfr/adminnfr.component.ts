@@ -148,7 +148,6 @@ export class AdminnfrComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.getCategories();
     });
   }
 
@@ -169,14 +168,13 @@ export class AdminnfrComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-
-      this.getCategories();
     });
   }
 
   deleteNfr(nfr)
   {
     this.nfrService.deleteNfr(nfr.id).subscribe(data => {
+      this.events.reportChange()
       this.getCategories()
     })
   }

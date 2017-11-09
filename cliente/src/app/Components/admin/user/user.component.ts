@@ -159,7 +159,6 @@ export class UserComponent implements OnInit, OnChanges {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.getProfessions();
     });
   }
 
@@ -184,7 +183,6 @@ export class UserComponent implements OnInit, OnChanges {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.getProfessions();
     });
   }
 
@@ -192,6 +190,7 @@ export class UserComponent implements OnInit, OnChanges {
   deleteUser(pro)
   {
     this.userService.deleteUser(pro.id).subscribe( data => {
+      this.events.reportChange()
       this.getProfessions()
     })
   }

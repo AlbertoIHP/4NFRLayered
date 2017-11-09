@@ -109,7 +109,6 @@ export class ProfessionComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.getProfessions();
     });
   }
 
@@ -130,7 +129,6 @@ export class ProfessionComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.getProfessions();
     });
   }
 
@@ -138,6 +136,7 @@ export class ProfessionComponent implements OnInit {
   deleteProfession(pro)
   {
     this.professionService.deleteProfession(pro.id).subscribe( data => {
+      this.events.reportChange()
       this.getProfessions()
     })
   }

@@ -228,6 +228,7 @@ export class NfrComponent implements OnInit {
 
       this.totalSoftgoalNfr[j].softgoals_id = currentSoft[0].name
       this.totalSoftgoalNfr[j].nfrs_id = currentNfr[0].name
+    }
 
 
       //Datatables
@@ -242,7 +243,6 @@ export class NfrComponent implements OnInit {
             this.sourcePorNombre.filter = this.filter.nativeElement.value;
           });
 
-    }
   }
 
   openAddModal()
@@ -256,11 +256,6 @@ export class NfrComponent implements OnInit {
         totalNfrs: this.totalNfrs,
         softgoalnfrService: this.softgoalnfrService
       }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-
-      this.getStakeholders();
     });
   }
 
@@ -287,16 +282,13 @@ export class NfrComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-
-      this.getStakeholders();
-    });
   }
 
 
-  deleteSoftgoal(pro)
+  deleteNfr(pro)
   {
     this.softgoalService.deleteSoftgoal(pro.id).subscribe( data => {
+      this.events.reportChange()
       this.getStakeholders()
     })
   }

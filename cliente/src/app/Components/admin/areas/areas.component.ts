@@ -108,7 +108,6 @@ export class AreasComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.getAreas();
     });
   }
 
@@ -128,7 +127,6 @@ export class AreasComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.getAreas();
     });
   }
 
@@ -136,6 +134,7 @@ export class AreasComponent implements OnInit {
   deleteArea(area)
   {
     this.areaService.deleteArea(area.id).subscribe( data => {
+      this.events.reportChange()
       this.getAreas()
     })
   }

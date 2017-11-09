@@ -95,7 +95,7 @@ export class RoleComponent implements OnInit {
   eliminarRole (role)
   {
     this.servicioRole.deleteRole(role.id).subscribe( data => {
-      console.log(data);
+      this.events.reportChange()
       this.actualizarRoles();
     });
   }
@@ -119,7 +119,6 @@ export class RoleComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.actualizarRoles();
     });
   }
 
@@ -131,7 +130,6 @@ export class RoleComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.actualizarRoles();
     });
   }
 
