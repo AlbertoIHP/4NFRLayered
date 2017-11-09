@@ -21,6 +21,9 @@ export class EventService {
     public openGoal: any
     public openSoft: any
 
+    //Evento global que comunica cambios en la persistencia de los datos
+    public hasChanged: any
+
     editProjectModal(index)
     {
       if( index === 0 )
@@ -59,8 +62,14 @@ export class EventService {
         this.openNon = new EventEmitter()
         this.openGoal = new EventEmitter()
         this.openSoft = new EventEmitter()
+        this.hasChanged = new EventEmitter()
 
 
+    }
+
+    public reportChange()
+    {
+      this.hasChanged.emit()
     }
 
     public openAddModal(index)

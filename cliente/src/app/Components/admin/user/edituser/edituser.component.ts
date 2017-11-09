@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
+import { EventService } from '../../../../Services/events.service'
 
 @Component({
   selector: 'app-edituser',
@@ -20,7 +21,8 @@ export class EdituserComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<EdituserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private events: EventService
     )
   {
     this.goDescription = true
@@ -35,9 +37,8 @@ export class EdituserComponent implements OnInit {
 
   addUser()
   {
-    console.log(this.newUser)
     this.userService.editUser(this.newUser,this.newUser.id).subscribe(data => {
-
+      this.events.reportChange()
     })
   }
 

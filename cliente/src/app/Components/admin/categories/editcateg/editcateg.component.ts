@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
+import { EventService } from '../../../../Services/events.service'
 
 @Component({
   selector: 'app-editcateg',
@@ -15,7 +16,8 @@ export class EditcategComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<EditcategComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private events: EventService
     )
   {
     this.finish = true
@@ -35,6 +37,7 @@ export class EditcategComponent implements OnInit {
   editCategory()
   {
     this.categoryService.editCategory(this.newCategory, this.newCategory.id).subscribe( data => {
+      this.events.reportChange()
       this.onNoClick()
     })
   }

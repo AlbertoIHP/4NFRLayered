@@ -53,6 +53,11 @@ export class AreasComponent implements OnInit {
     this.events.openArea.subscribe( data => {
       this.openAddModal()
     })
+
+    this.events.hasChanged.subscribe( data => {
+      this.getAreas()
+    })
+
     this.searchByName = false
     this.totalAreas = []
     this.getAreas()

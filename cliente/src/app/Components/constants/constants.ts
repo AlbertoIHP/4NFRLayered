@@ -106,6 +106,11 @@ export class buscadorPorNombre extends DataSource<any> {
            let searchStr = (item.email ).toLowerCase();
            return searchStr.indexOf(this.filter.toLowerCase()) != -1;
         }
+        else if(this.filtro === 'softgoalnfrs' )
+        {
+           let searchStr = (item.nfrs_id ).toLowerCase();
+           return searchStr.indexOf(this.filter.toLowerCase()) != -1;
+        }
 
 
       });

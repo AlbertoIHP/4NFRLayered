@@ -50,6 +50,10 @@ public totalRoles: Role[];
       this.agregacionRole()
     })
 
+    this.events.hasChanged.subscribe( data => {
+      this.actualizarRoles()
+    })
+
     this.buscarPorNombre = false;
     this.totalRoles = [];
     this.actualizarRoles();

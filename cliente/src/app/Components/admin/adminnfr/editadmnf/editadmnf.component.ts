@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
+import { EventService } from '../../../../Services/events.service'
 
 
 @Component({
@@ -20,7 +21,8 @@ export class EditadmnfComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<EditadmnfComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private events: EventService
     )
   {
     this.goCategory = true
@@ -43,6 +45,7 @@ export class EditadmnfComponent implements OnInit {
   editNfr()
   {
     this.nfrService.editNfr(this.newNfr, this.newNfr.id).subscribe( data => {
+      this.events.reportChange()
       this.onNoClick()
     })
   }

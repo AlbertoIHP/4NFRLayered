@@ -99,12 +99,13 @@ export class LoginComponent implements OnInit {
         var currentUser = this.totalUsers.filter( user => user.email === this.user)
 
         localStorage.setItem('userInfo', JSON.stringify(currentUser[0]) )
+      this.events.singIn()
+      this.router.navigate([''])
 
       })
 
 
-      this.events.singIn()
-      this.router.navigate([''])
+
     })
 
   }

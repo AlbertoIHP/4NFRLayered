@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
+import { EventService } from '../../../../Services/events.service'
 
 @Component({
   selector: 'app-editprof',
@@ -16,7 +17,8 @@ export class EditprofComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<EditprofComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private events: EventService
     )
   {
     this.goDescription = true
@@ -28,6 +30,7 @@ export class EditprofComponent implements OnInit {
   editArea()
   {
     this.areaService.editProfession(this.newArea, this.newArea.id).subscribe( data => {
+      this.events.reportChange()
       this.onNoClick()
     })
   }

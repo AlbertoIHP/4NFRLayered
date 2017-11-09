@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
+import { EventService } from '../../../../Services/events.service'
 
 @Component({
   selector: 'app-editare',
@@ -17,7 +18,8 @@ export class EditareComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<EditareComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private events: EventService
     )
   {
     this.goDescription = true
@@ -29,6 +31,7 @@ export class EditareComponent implements OnInit {
   editArea()
   {
     this.areaService.editArea(this.newArea, this.newArea.id).subscribe( data => {
+      this.events.reportChange()
       this.onNoClick()
     })
   }

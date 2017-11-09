@@ -41,6 +41,7 @@ export class AdduserComponent implements OnInit {
   {
     console.log(this.newUser)
     this.userService.registerUser(this.newUser).subscribe(data => {
+      this.events.reportChange()
       this.events.singUp(this.newUser)
     })
   }

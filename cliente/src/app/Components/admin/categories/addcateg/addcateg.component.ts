@@ -1,6 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
+import { EventService } from '../../../../Services/events.service'
+
+
+
 @Component({
   selector: 'app-addcateg',
   templateUrl: './addcateg.component.html',
@@ -15,7 +19,8 @@ export class AddcategComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddcategComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private events: EventService
     )
   {
     this.finish = true
@@ -36,6 +41,7 @@ export class AddcategComponent implements OnInit {
   addCategory()
   {
     this.categoryService.registerCategory(this.newCategory).subscribe( data => {
+      this.events.reportChange()
       this.onNoClick()
     })
   }

@@ -59,6 +59,10 @@ export class AdminnfrComponent implements OnInit {
       this.openAddModal()
     })
 
+    this.events.hasChanged.subscribe( data => {
+      this.getCategories()
+    })
+
     this.searchByName = false
     this.totalNfrs = []
     this.totalCategories = []

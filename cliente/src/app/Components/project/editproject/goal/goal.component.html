@@ -1,3 +1,125 @@
-<p>
-  goal works!
-</p>
+ <div class="row">
+  <div class="col s1" >
+  <input (click)="changeSearch()" type="checkbox" id="test5" />
+  <label for="test5" class="selectRaro"></label>
+
+  </div>
+  <div class="col s11">
+  <label for="miinput">Búsqueda por Nombre</label>
+  <input matInput #filter style="width: 100% !important;" id="miinput">
+  </div>
+</div>
+
+
+<div class="example-container mat-elevation-z8">
+
+  <mat-table #table *ngIf="!searchByName" [dataSource]="sourceDatatable">
+
+    <ng-container matColumnDef="Acciones">
+      <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+
+              <button  mat-icon-button (click) = "openEditModal(row)" >
+                <mat-icon >create</mat-icon>
+              </button>
+
+
+              <button  mat-icon-button (click) = "deleteGoal(row)" >
+                <mat-icon >delete</mat-icon>
+              </button>
+
+       </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Descripcion">
+      <mat-header-cell *matHeaderCellDef> Descripcion </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Stakeholder">
+      <mat-header-cell *matHeaderCellDef> Stakeholder </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.stakeholders_id }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Relevancia">
+      <mat-header-cell *matHeaderCellDef> Relevancia </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.relevances_id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Fecha">
+      <mat-header-cell *matHeaderCellDef> Fecha de creacion</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.date}} - {{row.time}} </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="['odd', 'highlight'][row.id %2]"></mat-row>
+
+  </mat-table>
+
+
+ <mat-table #table *ngIf="searchByName" [dataSource]="sourcePorNombre">
+
+    <ng-container matColumnDef="Acciones">
+      <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+
+              <button  mat-icon-button (click) = "openEditModal(row)" >
+                <mat-icon >create</mat-icon>
+              </button>
+
+
+              <button  mat-icon-button (click) = "deleteGoal(row)" >
+                <mat-icon >delete</mat-icon>
+              </button>
+
+       </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Descripcion">
+      <mat-header-cell *matHeaderCellDef> Descripcion </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Stakeholder">
+      <mat-header-cell *matHeaderCellDef> Stakeholder </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.stakeholders_id }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Relevancia">
+      <mat-header-cell *matHeaderCellDef> Relevancia </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.relevances_id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Fecha">
+      <mat-header-cell *matHeaderCellDef> Fecha de creacion</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.date}} - {{row.time}} </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="['odd', 'highlight'][row.id %2]"></mat-row>
+
+</mat-table>
+
+
+  <mat-paginator #paginator
+                [length]="totalGoals.length"
+                [pageIndex]="0"
+                [pageSize]="5"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+
+
+</div>
+

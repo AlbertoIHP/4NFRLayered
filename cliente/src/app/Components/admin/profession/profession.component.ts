@@ -57,6 +57,10 @@ export class ProfessionComponent implements OnInit {
       this.openAddModal()
     })
 
+    this.events.hasChanged.subscribe( data => {
+      this.getProfessions()
+    })
+
     this.searchByName = false
     this.totalProfessions = []
     this.getProfessions()

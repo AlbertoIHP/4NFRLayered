@@ -53,6 +53,10 @@ export class CategoriesComponent implements OnInit {
       this.openAddModal()
     })
 
+    this.events.hasChanged.subscribe( data => {
+      this.getCategories()
+    })
+
     this.searchByName = false
     this.totalCategories = []
     this.getCategories()

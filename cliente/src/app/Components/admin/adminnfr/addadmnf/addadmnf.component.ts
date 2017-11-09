@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
+import { EventService } from '../../../../Services/events.service'
 
 @Component({
   selector: 'app-addadmnf',
@@ -16,10 +17,20 @@ export class AddadmnfComponent implements OnInit {
   public goCategory: boolean
   public finish: boolean
 
+  addNfr()
+  {
+    this.nfrService.registerNfr(this.newNfr).subscribe( data => {
+      this.events.reportChange()
+      this.onNoClick()
+    })
+  }
+
+
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddadmnfComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private events: EventService
     )
   {
     this.goCategory = true
@@ -38,12 +49,6 @@ export class AddadmnfComponent implements OnInit {
     })
   }
 
-  addNfr()
-  {
-    this.nfrService.registerNfr(this.newNfr).subscribe( data => {
-      this.onNoClick()
-    })
-  }
 
   checkCategory()
   {

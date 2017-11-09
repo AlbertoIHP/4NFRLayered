@@ -4,21 +4,13 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { RoleService } from '../../../../Services/role.service';
 import { Role } from '../../../../Models/Role.model';
 
-
-
 import { FunctionalityService } from '../../../../Services/functionality.service';
 import { Functionality } from '../../../../Models/Functionality.model';
-// import { ModuloService } from '../../../../Services/modulo/modulo.service';
-// import { Modulo } from '../../../../Models/Modulo.model';
 
-
-
-
-// import { PermisoModuloService } from '../../../../Services/permisomodulo/permisomodulo.service';
-// import { PermisoModulo } from '../../../../Models/PermisoModulo.model';
 import { PermiseService } from '../../../../Services/permise.service';
 import { Permise } from '../../../../Models/Permise.model';
 
+import { EventService } from '../../../../Services/events.service'
 
 
 
@@ -39,7 +31,8 @@ export class AddroleComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public servicioRole: RoleService,
     public servicioModulo: FunctionalityService,
-    public servicioPM: PermiseService
+    public servicioPM: PermiseService,
+    private events: EventService
     )
   {
     this.totalModulos = []
@@ -122,6 +115,7 @@ export class AddroleComponent implements OnInit {
 
 
         }
+        this.events.reportChange()
 
       })
 

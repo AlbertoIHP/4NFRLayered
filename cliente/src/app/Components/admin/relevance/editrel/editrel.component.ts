@@ -1,6 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
+import { EventService } from '../../../../Services/events.service'
+
+
+
 @Component({
   selector: 'app-editrel',
   templateUrl: './editrel.component.html',
@@ -15,7 +19,8 @@ export class EditrelComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<EditrelComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private events: EventService
     )
   {
     this.goDescription = true
@@ -27,6 +32,7 @@ export class EditrelComponent implements OnInit {
   editArea()
   {
     this.areaService.editRelevance(this.newArea, this.newArea.id).subscribe( data => {
+      this.events.reportChange()
       this.onNoClick()
     })
   }

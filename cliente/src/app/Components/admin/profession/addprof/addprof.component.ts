@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
+import { EventService } from '../../../../Services/events.service'
 
 @Component({
   selector: 'app-addprof',
@@ -18,7 +19,8 @@ export class AddprofComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddprofComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private events: EventService
     )
   {
     this.goDescription = true
@@ -30,6 +32,7 @@ export class AddprofComponent implements OnInit {
   addArea()
   {
     this.areaService.registerProfession(this.newArea).subscribe( data => {
+      this.events.reportChange()
       this.onNoClick()
     })
   }

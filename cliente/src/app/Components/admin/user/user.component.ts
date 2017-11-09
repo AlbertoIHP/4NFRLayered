@@ -69,6 +69,9 @@ export class UserComponent implements OnInit, OnChanges {
       this.openAddModal()
     })
 
+    this.events.hasChanged.subscribe( data => {
+      this.getProfessions()
+    })
     this.searchByName = false
     this.totalProfessions = []
     this.totalRoles = []

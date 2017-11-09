@@ -144,14 +144,14 @@ export class ProjectComponent implements OnInit {
 
   goEdit(project)
   {
-    localStorage.setItem('currentProject', project)
+    localStorage.setItem('currentProject', JSON.stringify(project))
     this.router.navigate(['edit'])
   }
 
 
   goView(project)
   {
-    localStorage.setItem('currentProject', project)
+    localStorage.setItem('currentProject', JSON.stringify(project))
     this.router.navigate(['view'])
   }
 

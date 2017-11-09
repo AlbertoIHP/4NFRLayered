@@ -58,6 +58,10 @@ export class RelevanceComponent implements OnInit {
       this.openAddModal()
     })
 
+    this.events.hasChanged.subscribe( data => {
+      this.getRelevances()
+    })
+
     this.searchByName = false
     this.totalRelevances = []
     this.getRelevances()
