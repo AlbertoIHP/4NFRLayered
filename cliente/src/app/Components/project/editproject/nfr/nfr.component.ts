@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { EventService } from '../../../../Services/events.service'
 @Component({
   selector: 'app-nfr',
   templateUrl: './nfr.component.html',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NfrComponent implements OnInit {
 
-  constructor() { }
+  constructor(private events: EventService)
+  {
+    this.events.openNon.subscribe( data => {
+      this.openAddModal()
+    } )
+  }
 
   ngOnInit() {
   }
+
+  openAddModal()
+  {
+    console.log("Soy nfr debo abrirme")
+  }
+
 
 }

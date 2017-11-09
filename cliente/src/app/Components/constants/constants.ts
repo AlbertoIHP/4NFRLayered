@@ -96,7 +96,7 @@ export class buscadorPorNombre extends DataSource<any> {
 
 
         //Esto debe cambiar para este proyecto
-        if(this.filtro === "nfr" || this.filtro === "area" || this.filtro === "categories" || this.filtro === 'role')
+        if( this.filtro === "project" || this.filtro === "nfr" || this.filtro === "area" || this.filtro === "categories" || this.filtro === 'role')
         {
            let searchStr = (item.name ).toLowerCase();
            return searchStr.indexOf(this.filter.toLowerCase()) != -1;

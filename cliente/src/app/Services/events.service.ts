@@ -15,6 +15,33 @@ export class EventService {
     public openProfession: any
     public openRelevance:any
 
+    //Eventos para las TAB de editProject
+    public openStake: any
+    public openNon: any
+    public openGoal: any
+    public openSoft: any
+
+    editProjectModal(index)
+    {
+      if( index === 0 )
+      {
+        this.openStake.emit()
+      }
+      else if( index === 1 )
+      {
+        this.openGoal.emit()
+      }
+      else if( index === 2 )
+      {
+        this.openSoft.emit()
+      }
+      else if( index === 3 )
+      {
+        this.openNon.emit()
+      }
+
+
+    }
 
     constructor() {
         this.isSingIn = new EventEmitter()
@@ -27,7 +54,11 @@ export class EventService {
         this.openCategory = new EventEmitter()
         this.openProfession = new EventEmitter()
         this.openRelevance = new EventEmitter()
-
+        this.openNon = new EventEmitter()
+        this.openStake = new EventEmitter()
+        this.openNon = new EventEmitter()
+        this.openGoal = new EventEmitter()
+        this.openSoft = new EventEmitter()
 
 
     }

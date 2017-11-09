@@ -1,4 +1,4 @@
-<mat-tab-group>
+<mat-tab-group #group (selectedTabChange)="changeTab(group)">
 
   <mat-tab label="Stakeholders">
     <app-stakeholder></app-stakeholder>
@@ -17,3 +17,9 @@
   </mat-tab>
 
 </mat-tab-group>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large blue" (click)="openAddModal()">
+    <i class="large material-icons">add</i>
+  </a>
+</div>

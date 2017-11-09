@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule, MatStepperModule, MatCardModule, MatGridListModule, MatButtonToggleModule, MatTabsModule, MatInputModule , MatSelectModule, MatDialogModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule, MatMenuModule, MatIconModule } from '@angular/material';
+import { MatNativeDateModule, MatDatepickerModule, MatListModule, MatStepperModule, MatCardModule, MatGridListModule, MatButtonToggleModule, MatTabsModule, MatInputModule , MatSelectModule, MatDialogModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule, MatMenuModule, MatIconModule } from '@angular/material';
 
 
 //Componentes
@@ -54,6 +54,8 @@ import { AddadmnfComponent } from './Components/admin/adminnfr/addadmnf/addadmnf
 import { EditadmnfComponent } from './Components/admin/adminnfr/editadmnf/editadmnf.component';
 import { AdduserComponent } from './Components/admin/user/adduser/adduser.component';
 import { EdituserComponent } from './Components/admin/user/edituser/edituser.component';
+import { AddprojectComponent } from './Components/project/addproject/addproject.component';
+
 
 
 
@@ -82,7 +84,6 @@ import { SoftgoalnfrService } from './Services/softgoalnfr.service';
 import { StakeholderService } from './Services/stakeholder.service';
 import { UserService } from './Services/user.service';
 import { routing, appRoutingProviders } from './Routes/router.module';
-
 
 
 
@@ -132,7 +133,8 @@ import { routing, appRoutingProviders } from './Routes/router.module';
     LoginComponent,
     UserComponent,
     AdduserComponent,
-    EdituserComponent
+    EdituserComponent,
+    AddprojectComponent
   ],
 
     entryComponents:
@@ -160,7 +162,8 @@ import { routing, appRoutingProviders } from './Routes/router.module';
     AddadmnfComponent,
     EditadmnfComponent,
     AdduserComponent,
-    EdituserComponent
+    EdituserComponent,
+    AddprojectComponent
   ],
 
   imports: [
@@ -186,7 +189,9 @@ import { routing, appRoutingProviders } from './Routes/router.module';
     MatGridListModule,
     MatCardModule,
     MatStepperModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     AuthenticationService,
@@ -206,6 +211,7 @@ import { routing, appRoutingProviders } from './Routes/router.module';
     SoftgoalnfrService,
     StakeholderService,
     UserService
+
   ],
   bootstrap: [AppComponent]
 })

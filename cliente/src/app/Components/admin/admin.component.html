@@ -1,4 +1,4 @@
-<mat-tab-group #group (selectedTabChange)="changeTab(group)">
+<mat-tab-group #group (selectedTabChange)="changeTab(group)" >
 
   <mat-tab label="Usuarios"  >
     <app-user></app-user>
@@ -31,8 +31,8 @@
 
 </mat-tab-group>
 
- <div class="fixed-action-btn">
-    <a class="btn-floating btn-large blue" (click)="openAddModal()">
-      <i class="large material-icons">add</i>
-    </a>
-  </div>
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large blue" (click)="openAddModal()">
+    <i class="large material-icons">add</i>
+  </a>
+</div>

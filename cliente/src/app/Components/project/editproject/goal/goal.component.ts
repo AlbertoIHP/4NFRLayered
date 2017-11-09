@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from '../../../../Services/events.service'
 
 @Component({
   selector: 'app-goal',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private events: EventService)
+  {
+    this.events.openGoal.subscribe( data => {
+      this.openAddModal()
+    })
+  }
 
   ngOnInit() {
   }
+
+  openAddModal()
+  {
+    console.log("Soy goal debo abrirme")
+  }
+
 
 }
