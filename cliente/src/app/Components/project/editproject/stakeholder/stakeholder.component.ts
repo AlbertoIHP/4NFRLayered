@@ -156,7 +156,11 @@ export class StakeholderComponent implements OnInit {
 
   openEditModal(pro)
   {
+
+
     let proAux = JSON.parse(JSON.stringify(pro))
+
+    proAux.projects_id = this.projectInfo.id.toString()
 
     let dialogRef = this.dialog.open(EditstakeComponent, {
       width: '1000px',

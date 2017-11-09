@@ -263,13 +263,25 @@ export class NfrComponent implements OnInit {
 
 
 
+  stringToId(asd)
+  {
+    var currentNfr = this.totalNfrs.filter( nfr => nfr.name === asd.nfrs_id )
+    var currentSoft = this.totalSoftgoals.filter( soft => soft.name === asd.softgoals_id)
 
+    asd.nfrs_id = currentNfr[0].id.toString()
+    asd.softgoals_id = currentSoft[0].id.toString()
+
+    return asd
+  }
 
 
 
   openEditModal(pro)
   {
     let proAux = JSON.parse(JSON.stringify(pro))
+
+    proAux = this.stringToId(proAux)
+
 
     let dialogRef = this.dialog.open(EditnfrComponent, {
       width: '1000px',

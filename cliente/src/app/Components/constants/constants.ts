@@ -108,7 +108,7 @@ export class buscadorPorNombre extends DataSource<any> {
         }
         else if(this.filtro === 'softgoalnfrs' )
         {
-           let searchStr = (item.nfrs_id ).toLowerCase();
+           let searchStr = (item.softgoals_id ).toLowerCase();
            return searchStr.indexOf(this.filter.toLowerCase()) != -1;
         }
 

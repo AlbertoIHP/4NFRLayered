@@ -21,9 +21,12 @@ import { AdduserComponent } from './Components/admin/user/adduser/adduser.compon
 })
 export class AppComponent {
   public isLogeado = false
+  public currentUser: User
 
   constructor(  public router: Router, public events : EventService)
   {
+
+    this.currentUser = new User()
 
 
     if( localStorage.getItem('currentUser') )
@@ -33,6 +36,7 @@ export class AppComponent {
 
 
     this.events.isSingIn.subscribe( data => {
+      this.currentUser = JSON.parse(localStorage.getItem('userInfo'))
       this.isLogeado = true
     } )
 

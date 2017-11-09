@@ -181,11 +181,24 @@ export class GoalComponent implements OnInit {
 
 
 
+  stringToId(goal)
+  {
+    var currentStakeholder = this.totalStakeholders.filter( stake => stake.name === goal.stakeholders_id)
+    var currentRelevance = this.totalRelevances.filter( relevance => relevance.name === goal.relevances_id)
+
+    goal.stakeholders_id = currentStakeholder[0].id.toString()
+    goal.relevances_id = currentRelevance[0].id.toString()
+
+
+    return goal
+  }
 
 
   openEditModal(pro)
   {
     let proAux = JSON.parse(JSON.stringify(pro))
+
+    proAux = this.stringToId(proAux)
 
     let dialogRef = this.dialog.open(EditgoalComponent, {
       width: '1000px',

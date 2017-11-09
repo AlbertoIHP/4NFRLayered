@@ -221,7 +221,16 @@ export class SoftgoalComponent implements OnInit {
 
 
 
+  stringToId(softgoal)
+  {
+    var currentGoal = this.totalGoals.filter( goal => goal.name === softgoal.goals_id)
+    var currentRelevance = this.totalRelevances.filter( relevance => relevance.name === softgoal.relevances_id)
+    softgoal.goals_id = currentGoal[0].id.toString()
+    softgoal.relevances_id = currentRelevance[0].id.toString()
 
+
+    return softgoal
+  }
 
 
 
@@ -229,6 +238,8 @@ export class SoftgoalComponent implements OnInit {
   openEditModal(pro)
   {
     let proAux = JSON.parse(JSON.stringify(pro))
+
+    proAux = this.stringToId(proAux)
 
     let dialogRef = this.dialog.open(EditsoftComponent, {
       width: '1000px',
