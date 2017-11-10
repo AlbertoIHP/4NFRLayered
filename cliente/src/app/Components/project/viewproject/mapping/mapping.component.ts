@@ -6,8 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mapping.component.css']
 })
 export class MappingComponent implements OnInit {
+  private engine: any
 
-  constructor() { }
+  constructor(){
+
+    this.engine = JSON.parse(localStorage.getItem('engine'))
+    console.log(this.engine)
+
+
+
+  }
 
   ngOnInit() {
   }

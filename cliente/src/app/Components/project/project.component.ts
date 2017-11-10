@@ -16,6 +16,7 @@ import { EventService } from '../../Services/events.service'
 
 import { AddprojectComponent } from './addproject/addproject.component'
 
+import { EngineViewModel } from '../../Models/EngineViewModel.model'
 
 //Datatable
 import {DataSource} from '@angular/cdk/collections';
@@ -33,6 +34,19 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { ExampleDatabase, dataTable, buscadorPorNombre } from '../constants/constants';
 
 
+import { Stakeholder } from '../../Models/Stakeholder.model'
+import { StakeholderService } from '../../Services/stakeholder.service'
+
+import { Goal } from '../../Models/Goal.model'
+import { GoalService } from '../../Services/goal.service'
+
+import { Softgoal } from '../../Models/Softgoal.model'
+import { SoftgoalService } from '../../Services/softgoal.service'
+
+import { SoftgoalNfr } from '../../Models/SoftgoalNfr.model'
+import { SoftgoalnfrService } from '../../Services/softgoalnfr.service'
+
+import { NfrService } from '../../Services/nfr.service'
 
 @Component({
   selector: 'app-project',
@@ -56,13 +70,25 @@ export class ProjectComponent implements OnInit {
   public userInfo
   public alive: boolean
 
+  private projectStakeholders: Stakeholder[]
+  private projectGoals: Goal[]
+  private projectSoftgoals: Softgoal[]
+  private projectNfrs: SoftgoalNfr[]
+
+  private auxProject: Project
+
 
   constructor(
     public dialog: MatDialog,
     private router: Router,
     private projectService: ProjectService,
     private areaService: AreaService,
-    private events: EventService)
+    private events: EventService,
+    private stakeholderService : StakeholderService,
+    private goalService: GoalService,
+    private softgoalService: SoftgoalService,
+    private nfrService: SoftgoalnfrService,
+    private non: NfrService)
   {
     this.alive = true
 
@@ -165,8 +191,101 @@ export class ProjectComponent implements OnInit {
 
   goView(project)
   {
-    localStorage.setItem('currentProject', JSON.stringify(project))
-    this.router.navigate(['view'])
+
+    this.auxProject = project
+
+    this.stakeholderService.getStakeholders().subscribe( data => {
+
+      this.projectStakeholders = this.normalizeData(data).filter( stakeholder => this.auxProject.id === parseInt(stakeholder.projects_id) )
+
+      this.goalService.getGoals().subscribe( data => {
+
+        this.projectGoals = []
+
+        let aux = this.normalizeData(data)
+
+        for ( let i = 0 ; i < aux.length ; i ++ )
+        {
+          for( let j = 0 ; j < this.projectStakeholders.length ; j ++ )
+          {
+
+            if( parseInt(aux[i].stakeholders_id) === this.projectStakeholders[j].id )
+            {
+              this.projectGoals.push(aux[i])
+              break
+            }
+
+          }
+        }
+
+        this.softgoalService.getSoftgoals().subscribe( data => {
+
+          let aux = this.normalizeData(data)
+          this.projectSoftgoals = []
+
+          for ( let i = 0 ; i < aux.length ; i ++ )
+          {
+            for( let j = 0 ; j < this.projectGoals.length ; j ++ )
+            {
+
+              if( parseInt(aux[i].goals_id) === this.projectGoals[j].id )
+              {
+                this.projectSoftgoals.push(aux[i])
+                break
+              }
+
+            }
+          }
+
+          this.nfrService.getSoftgoalNfrs().subscribe( data => {
+            let aux = this.normalizeData(data)
+            this.projectNfrs = []
+
+
+            for ( let i = 0 ; i < aux.length ; i ++ )
+            {
+              for( let j = 0 ; j < this.projectSoftgoals.length ; j ++ )
+              {
+
+                if( parseInt(aux[i].softgoals_id) === this.projectSoftgoals[j].id )
+                {
+                  this.projectNfrs.push(aux[i])
+                  break
+                }
+
+              }
+            }
+
+
+            this.non.getNfrs().subscribe(data => {
+              let engine = new EngineViewModel(this.projectStakeholders, this.projectGoals, this.projectSoftgoals, this.projectNfrs, this.normalizeData(data))
+
+              localStorage.setItem('engine', JSON.stringify(engine))
+
+              this.router.navigate(['view'])
+            })
+
+
+
+
+
+
+
+          })
+
+
+
+
+        })
+
+
+      })
+
+
+    })
+
+
+
   }
 
 

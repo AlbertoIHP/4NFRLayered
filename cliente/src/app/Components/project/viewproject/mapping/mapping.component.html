@@ -1,3 +1,23 @@
-<p>
-  mapping works!
-</p>
+
+       <table class="striped">
+
+        <thead>
+          <tr>
+              <th>Goal \ NFR</th>
+              <th *ngFor="let nfr of engine.allNfrs" >{{nfr.name}} </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let nfr of engine.nfrsPerGoal" >
+            <td>{{nfr.goal}}</td>
+            <td *ngFor=" let current of nfr.nfrs" style="text-align: center">
+              <mat-icon *ngIf="!(current === '-')">fiber_manual_record</mat-icon>
+              <mat-icon *ngIf="(current === '-')"> - </mat-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
