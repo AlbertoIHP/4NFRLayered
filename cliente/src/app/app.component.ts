@@ -26,7 +26,15 @@ export class AppComponent {
   constructor(  public router: Router, public events : EventService)
   {
 
+
+
     this.currentUser = new User()
+
+    if( localStorage.getItem('userInfo') )
+    {
+      this.currentUser = JSON.parse(localStorage.getItem('userInfo'))
+    }
+
 
 
     if( localStorage.getItem('currentUser') )
