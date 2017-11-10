@@ -10,23 +10,23 @@ export class NfrrelevantComponent implements OnInit {
   public engine: any
   // Doughnut
   public goals:string[] // = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-  public data:number[]
+  public data:any[]
   public detail: any
-  public type:string = 'polarArea';
+  public type:string = 'line';
 
   constructor()
   {
     this.engine = JSON.parse(localStorage.getItem('engine'))
     this.goals = []
-    this.data = []
+    this.data = [{data: [], label: 'Cantidad'}]
 
     let maxCost = -10000
     let costStake: any
 
 
-    for ( let stake of this.engine.nfrsPerGoal )
+    for ( let stake of this.engine.goalsPerNfr )
     {
-      let aux = stake.nfrs.filter( nfr => nfr != '-')
+      let aux = stake.goals
 
       if( aux.length > maxCost )
       {
@@ -34,12 +34,12 @@ export class NfrrelevantComponent implements OnInit {
         costStake = stake
       }
 
-      this.goals.push(stake.goal)
-      this.data.push(aux.length)
+      this.goals.push(stake.nfr)
+      this.data[0].data.push(aux.length)
     }
 
     try {
-        this.detail = "El goal mas costoso es '"+costStake.goal+"' con "+maxCost+" NFR"
+        this.detail = "El nfr mas relevante es '"+costStake.nfr+"' con "+maxCost+" repeticiones"
     }
     catch(err) {
        this.detail = "No hay registros aun"

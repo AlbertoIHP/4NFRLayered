@@ -5,6 +5,7 @@ export class EngineViewModel {
   public projectNfrs: any
   public allNfrs: any
   public nfrsPerGoal: any
+  public goalsPerNfr: any
 
   public matrixForMax: any
 
@@ -18,6 +19,44 @@ export class EngineViewModel {
     this.allNfrs = allnfrs
     this.filterNfrs()
     this.generateMatrix()
+    this.captureGoalsPerNfr()
+  }
+
+
+  captureGoalsPerNfr()
+  {
+
+    let finalArray: any = []
+
+    for( let i = 0 ; i < this.allNfrs.length ; i ++ )
+    {
+      finalArray.push({nfr: this.allNfrs[i].name, goals: []})
+
+      for (let j = 0 ; j < this.nfrsPerGoal.length ; j ++ )
+      {
+
+        for(let nfr of this.nfrsPerGoal[j].nfrs)
+        {
+
+          if(nfr != '-')
+          {
+            if( nfr.id === this.allNfrs[i].id )
+            {
+              finalArray[i].goals.push(this.nfrsPerGoal[j].goal)
+            }
+          }
+
+
+        }
+
+
+
+      }
+    }
+
+    console.log(finalArray)
+    this.goalsPerNfr = finalArray
+
   }
 
 
@@ -73,17 +112,8 @@ export class EngineViewModel {
         }
 
 
-
-
-
-
-
-
     }
 
-    console.log(this.allNfrs)
-
-    console.log(helper)
 
     this.nfrsPerGoal = helper
 
