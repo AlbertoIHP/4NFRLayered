@@ -2,7 +2,7 @@
 
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Informacion especifica</ng-template>
+      <ng-template matStepLabel>Información específica</ng-template>
 
         <label for="name">Ingrese un nombre para el nuevo NFR</label>
         <input matInput placeholder="" formControlName="firstCtrl" required id="name" [(ngModel)]="newNfr.name" (ngModelChange)="checkCategory()">
@@ -17,7 +17,7 @@
 
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Seleccion de categoria</ng-template>
+      <ng-template matStepLabel>Selección de categoría</ng-template>
 
 
       <div class="row">

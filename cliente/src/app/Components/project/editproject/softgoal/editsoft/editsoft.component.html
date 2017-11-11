@@ -1,15 +1,17 @@
 <mat-horizontal-stepper >
 
   <mat-step >
-      <ng-template matStepLabel>Informacion general</ng-template>
+      <ng-template matStepLabel>Información general</ng-template>
 
       <div class="row">
         <div class="col s6">
           <label for="name">Nombre</label>
+          <mat-icon style="float: right;" [matTooltip]="infoNombre" [matTooltipPosition]="position">info</mat-icon>
           <input matInput id="name"  [(ngModel)]="newSoftgoal.name" (ngModelChange)="checkGeneralInfo()" >
         </div>
         <div class="col s6">
-          <label for="description">Descripcion</label>
+          <label for="description">Descripción</label>
+          <mat-icon style="float: right;" [matTooltip]="infoDescripcion" [matTooltipPosition]="position">info</mat-icon>
           <input matInput id="description"  [(ngModel)]="newSoftgoal.description" (ngModelChange)="checkGeneralInfo()" >
         </div>
       </div>
@@ -28,7 +30,7 @@
       <ng-template matStepLabel>Detalles del Softgoal</ng-template>
 
       <div class="row">
-        <div class="col s12">
+        <div class="col s11">
 
           <mat-form-field style="width: 100%">
             <mat-select placeholder="Goal solicitante" [(ngModel)]="newSoftgoal.goals_id" (ngModelChange)="checkSigthInfo()" >
@@ -39,10 +41,13 @@
           </mat-form-field>
 
         </div>
+        <div class="col s1" style="margin-top: 28px">
+          <mat-icon [matTooltip]="infoGoal" [matTooltipPosition]="position">info</mat-icon>
+        </div>
       </div>
 
       <div class="row">
-        <div class="col s12">
+        <div class="col s11">
 
           <mat-form-field style="width: 100%">
             <mat-select placeholder="Relevancia del Softgoal" [(ngModel)]="newSoftgoal.relevances_id" (ngModelChange)="checkSigthInfo()" >
@@ -52,6 +57,9 @@
             </mat-select>
           </mat-form-field>
 
+        </div>
+        <div class="col s1" style="margin-top: 28px">
+          <mat-icon [matTooltip]="infoRelevancia" [matTooltipPosition]="position">info</mat-icon>
         </div>
       </div>
 

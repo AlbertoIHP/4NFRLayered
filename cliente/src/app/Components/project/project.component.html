@@ -1,6 +1,6 @@
 <div *ngIf="alive">
 
- <div class="row" >
+ <div class="row" > 
   <div class="col s1" >
   <input (click)="changeSearch()" type="checkbox" id="test5" />
   <label for="test5" class="selectRaro"></label>
@@ -47,22 +47,22 @@
       <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
     </ng-container>
-
+    
 
     <ng-container matColumnDef="Descripcion">
-      <mat-header-cell *matHeaderCellDef> Descripcion  </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Descripción  </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
     </ng-container>
 
 
     <ng-container matColumnDef="Area">
-      <mat-header-cell *matHeaderCellDef> Area </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Área </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.areas_id}} </mat-cell>
     </ng-container>
 
 
     <ng-container matColumnDef="Creacion">
-      <mat-header-cell *matHeaderCellDef> Fecha de creacion </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Fecha de creación </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.date}} - {{row.time}} </mat-cell>
     </ng-container>
 
@@ -112,19 +112,19 @@
 
 
     <ng-container matColumnDef="Descripcion">
-      <mat-header-cell *matHeaderCellDef> Descripcion  </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Descripción  </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
     </ng-container>
 
 
     <ng-container matColumnDef="Area">
-      <mat-header-cell *matHeaderCellDef> Area </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Área </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.areas_id}} </mat-cell>
     </ng-container>
 
 
     <ng-container matColumnDef="Creacion">
-      <mat-header-cell *matHeaderCellDef> Fecha de creacion </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Fecha de creación </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.date}} - {{row.time}} </mat-cell>
     </ng-container>
 

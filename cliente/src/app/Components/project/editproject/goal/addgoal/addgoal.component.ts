@@ -20,6 +20,12 @@ export class AddgoalComponent implements OnInit {
   private totalRelevances: any
   private goalService: any
   private totalStakeholders: any
+  private position = 'above';
+  private infoNombre = "¿Qué es un goal u objetivo? Es un objetivo que el stakeholder quiere alcanzar al utilizar el software. Por ejemplo: Conserje: Agendar uso de quincho";
+  private infoDescripcion = "¿Para qué describir un goal? Permite saber que es lo que hace el goal de manera específica, detallando más de lo que se podría inferir del nombre: Por ejemplo: El conserje tendrá la capacidad de agendar hroas para el quincho dentro del horario preestablecido por el edificio y a las personas que acrediten ser parte de este";
+  private infoRelevancia = "¿A que se refiere con relevancia del goal? Es en que medida el goal afectará al software final. Por ejemplo: La relevancia de este goal es relevante";
+  private infoStakeholder = "¿Quién es el stakeholder de un goal? Es quien está interasado en el Goal específico Por ejemplo: Goal agendar uso de quincho. El stakeholder de este Goal ese el conserje";
+
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddgoalComponent>,

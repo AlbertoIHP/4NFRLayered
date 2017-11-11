@@ -18,6 +18,11 @@ export class AddprojectComponent implements OnInit {
   private isntGeneralInfo: boolean
   private isntSigthInfo: boolean
   private userInfo: any
+  private position = 'above';
+  private infoNombre = "¿Para qué sirve el nombre del proyecto? El nombre del proyecto es importante para que el usuario sea capaz de    identificar lo que está modelando. Se recomienda que sea descriptivo, para que en caso de tener muchos proyectos sea fácil de ubicar desde el panel de administración de proyectos. Por ejemplo: Sistema de administración de edificios";
+  private infoDescripcion = "¿Cuál es la función de describir el proyecto? La descripción del proyecto permite tener una visión general del proyecto desde el panel de administración de proyectos ya que es más extenso que el nombre del proyecto. Por ejemplo: Este proyecto está orientado a realizar un software que permita realizar la administración uno o más edificios de manera sencilla para el usuario";
+  private infoArea = "¿Qué es el área del proyecto? El área del proyecto es la sección en que el proyecto es clasificado, permite tener un orden con respecto al tipo de proyecto que se llevará acabo. Por ejemplo: Área administrativa";
+  private infoFecha = "¿Qué es la fecha de término del proyecto? Esta es la fecha estimada en que se terminará el proyecto, permite que el usuario tenga claro el rango de tiempo que tiene el proyecto. Por ejemplo: 10 de Marzo del 2018";
 
   constructor(
     private _formBuilder: FormBuilder,

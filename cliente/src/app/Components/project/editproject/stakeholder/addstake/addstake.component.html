@@ -2,15 +2,17 @@
 
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Informacion general</ng-template>
+      <ng-template matStepLabel>Información general</ng-template>
 
       <div class="row">
         <div class="col s6">
           <label for="name">Nombre</label>
+          <mat-icon style="float: right;" [matTooltip]="infoNombre" [matTooltipPosition]="position">info</mat-icon>
           <input matInput id="name" formControlName="firstCtrl" required [(ngModel)]="newStakeholder.name" (ngModelChange)="checkGeneralInfo()" >
         </div>
         <div class="col s6">
-          <label for="description">Descripcion</label>
+          <label for="description">Descripción</label>
+          <mat-icon style="float: right;" [matTooltip]="infoDescripcion" [matTooltipPosition]="position">info</mat-icon>
           <input matInput id="description" formControlName="firstCtrl" required [(ngModel)]="newStakeholder.description" (ngModelChange)="checkGeneralInfo()" >
         </div>
       </div>
@@ -35,22 +37,26 @@
 
       <div class="row">
         <div class="col s12">
-          <label for="function">Funcion en el proyecto</label>
+          <label for="function">Función en el proyecto</label>
+          <mat-icon style="float: right;" [matTooltip]="infoFuncion" [matTooltipPosition]="position">info</mat-icon>
           <input matInput id="function" formControlName="secondCtrl" required [(ngModel)]="newStakeholder.function" (ngModelChange)="checkGeneralInfo()" >
         </div>
       </div>
 
       <div class="row">
-        <div class="col s12">
+        <div class="col s11">
 
           <mat-form-field style="width: 100%">
-            <mat-select placeholder="Profesion del stakeholder" formControlName="secondCtrl" required [(ngModel)]="newStakeholder.professions_id" (ngModelChange)="checkSigthInfo()" >
+            <mat-select placeholder="Profesión del stakeholder" formControlName="secondCtrl" required [(ngModel)]="newStakeholder.professions_id" (ngModelChange)="checkSigthInfo()" >
               <mat-option *ngFor="let profession of totalProfessions" [value]="profession.id">
                 {{ profession.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
+        </div>
+        <div class="col s1">
+          <mat-icon [matTooltip]="infoProfesion" [matTooltipPosition]="position">info</mat-icon>
         </div>
       </div>
 

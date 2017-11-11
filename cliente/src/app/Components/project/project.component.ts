@@ -57,7 +57,6 @@ export class ProjectComponent implements OnInit {
   public totalProjects: Project[]
   public totalAreas: Area[]
 
-
   //DATATABLE
   @ViewChild(MatPaginator) paginator: MatPaginator
   @ViewChild('filter') filter: ElementRef

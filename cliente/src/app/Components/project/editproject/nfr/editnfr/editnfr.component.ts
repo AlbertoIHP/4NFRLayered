@@ -27,6 +27,12 @@ export class EditnfrComponent implements OnInit {
 
   public auxAllNfrs: any
 
+  private position = 'above';
+  private infoCategoria = "¿Qué es un NFR? Un Non Functional Requirements, está altamente relacionado con el concepto de calidad de software y en medida que estos se cumplan se podrán realizar métricas para analizarlos. Estos NFR se dividen en distintas categorías, las que pueden ser seleccionadas. Por ejemplo: Fiabilidad";
+  private infoNFR = "Al seleccionar uno de los NFR de la lista, se mostrará una pequeña descripción de esta";
+  private infoSoft = "¿Por qué elegir un sofgoal? Los softgoals están altamente relacionados con los requerimientos no funcionales, por ello están relacionados. Por ejemplo: Agendar el uso de quincho tiene la posibilidad de agregar otros servicios para su utilización";
+
+
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<EditnfrComponent>,
