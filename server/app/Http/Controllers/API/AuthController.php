@@ -17,15 +17,23 @@ class AuthController extends AppBaseController
         error_log(json_encode($credentials));
 
         $token = null;
-        try {
-            if (! $token = JWTAuth::attempt($credentials)) {
+        try 
+        {
+            if (! $token = JWTAuth::attempt($credentials)) 
+            {
                 return response()->json(['error' => 'invalid_credentials'],401);
             }
-        } catch (JWTException $e) {
+        } 
+        catch (JWTException $e) 
+        {
             return response()->json(['error' => 'somthing_went_wrong'], 500);
         }
+
+
+
         $users = User::where('email', '=', $request->email, 'AND', 'password', '=', $request->password)->first();
-        //Se consulta si la cuenta se encuentra confirmada (activada con el email)
+
+
         if ($users->confirmed == 1) {
             return response()->json(['token' => $token, 'id_user' => $users->id],200);
         } else {
