@@ -14,6 +14,12 @@ export class RelevanceService {
 
   constructor(private http: Http, private authenticationService: AuthenticationService)
   {
+    this.setToken()
+
+  }
+
+  setToken()
+  {
     this.headers = new Headers(
     {
       'Authorization': 'Bearer ' + this.authenticationService.token,
@@ -21,32 +27,36 @@ export class RelevanceService {
     });
 
     this.options = new RequestOptions({ headers: this.headers });
-
-
   }
 
   getRelevances(): Observable<Relevance[]>
   {
+    this.setToken()
     return this.http.get(this.base, this.options).map((res: Response) => res.json());
   }
 
   registerRelevance(relevance: Relevance)
   {
+    this.setToken()
     return this.http.post( this.base, JSON.stringify(relevance), this.options).map((res: Response) => res.json());
 
   }
 
   getRelevance(id) : Observable<Relevance>
   {
+    this.setToken()
     return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
   }
 
   editRelevance(relevance: Relevance, id: number)
   {
+    this.setToken()
     return this.http.put(this.base+id, JSON.stringify(relevance), this.options).map((res: Response) => res.json());
   }
 
-  deleteRelevance(id) {
+  deleteRelevance(id)
+  {
+    this.setToken()
     return this.http.delete(this.base+id, this.options).map((res: Response) => res.json());
   }
 

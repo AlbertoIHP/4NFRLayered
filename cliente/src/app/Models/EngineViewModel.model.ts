@@ -148,14 +148,4 @@ export class EngineViewModel {
   }
 
 
-  getMaxRepeated()
-  {
-
-  }
-
-  getMinRepeated()
-  {
-
-  }
-
 }

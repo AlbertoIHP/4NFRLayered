@@ -14,6 +14,11 @@ export class RoleService {
 
   constructor(private http: Http, private authenticationService: AuthenticationService)
   {
+    this.setToken()
+  }
+
+  setToken()
+  {
     this.headers = new Headers(
     {
       'Authorization': 'Bearer ' + this.authenticationService.token,
@@ -21,32 +26,36 @@ export class RoleService {
     });
 
     this.options = new RequestOptions({ headers: this.headers });
-
-
   }
 
   getRoles(): Observable<Role[]>
   {
+    this.setToken()
     return this.http.get(this.base, this.options).map((res: Response) => res.json());
   }
 
   registerRole(rol : Role)
   {
+    this.setToken()
     return this.http.post( this.base, JSON.stringify(rol ), this.options).map((res: Response) => res.json());
 
   }
 
   getRole(id) : Observable<Role>
   {
+    this.setToken()
     return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
   }
 
   editRole(rol : Role, id: number)
   {
+    this.setToken()
     return this.http.put(this.base+id, JSON.stringify(rol ), this.options).map((res: Response) => res.json());
   }
 
-  deleteRole(id) {
+  deleteRole(id)
+  {
+    this.setToken()
     return this.http.delete(this.base+id, this.options).map((res: Response) => res.json());
   }
 

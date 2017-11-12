@@ -14,6 +14,11 @@ export class ProjectService {
 
   constructor(private http: Http, private authenticationService: AuthenticationService)
   {
+    this.setToken()
+  }
+
+  setToken()
+  {
     this.headers = new Headers(
     {
       'Authorization': 'Bearer ' + this.authenticationService.token,
@@ -21,32 +26,36 @@ export class ProjectService {
     });
 
     this.options = new RequestOptions({ headers: this.headers });
-
-
   }
 
   getProjects(): Observable<Project[]>
   {
+    this.setToken()
     return this.http.get(this.base, this.options).map((res: Response) => res.json());
   }
 
   registerProject(proj: Project)
   {
+    this.setToken()
     return this.http.post( this.base, JSON.stringify(proj), this.options).map((res: Response) => res.json());
 
   }
 
   getProject(id) : Observable<Project>
   {
+    this.setToken()
     return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
   }
 
   editProject(proj: Project, id: number)
   {
+    this.setToken()
     return this.http.put(this.base+id, JSON.stringify(proj), this.options).map((res: Response) => res.json());
   }
 
-  deleteProject(id) {
+  deleteProject(id)
+  {
+    this.setToken()
     return this.http.delete(this.base+id, this.options).map((res: Response) => res.json());
   }
 

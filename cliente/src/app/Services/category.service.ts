@@ -14,6 +14,11 @@ export class CategoryService {
 
   constructor(private http: Http, private authenticationService: AuthenticationService)
   {
+    this.setToken()
+  }
+
+  setToken()
+  {
     this.headers = new Headers(
     {
       'Authorization': 'Bearer ' + this.authenticationService.token,
@@ -21,12 +26,11 @@ export class CategoryService {
     });
 
     this.options = new RequestOptions({ headers: this.headers });
-
-
   }
 
   getCategories(): Observable<Category[]>
   {
+    this.setToken()
     return this.http.get(this.base, this.options).map((res: Response) => res.json());
   }
 
@@ -38,15 +42,19 @@ export class CategoryService {
 
   getCategory(id) : Observable<Category>
   {
+    this.setToken()
     return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
   }
 
   editCategory(category: Category, id: number)
   {
+    this.setToken()
     return this.http.put(this.base+id, JSON.stringify(category), this.options).map((res: Response) => res.json());
   }
 
-  deleteCategory(id) {
+  deleteCategory(id)
+  {
+    this.setToken()
     return this.http.delete(this.base+id, this.options).map((res: Response) => res.json());
   }
 

@@ -93,14 +93,17 @@ export class LoginComponent implements OnInit {
   login()
   {
     this.auth.login(this.user, this.password).subscribe(data => {
+      console.log(data)
+
+
       this.userService.getUsers().subscribe(data => {
         this.totalUsers = this.normalizeData(data)
 
         var currentUser = this.totalUsers.filter( user => user.email === this.user)
 
         localStorage.setItem('userInfo', JSON.stringify(currentUser[0]) )
-      this.events.singIn()
-      this.router.navigate([''])
+        this.events.singIn()
+        this.router.navigate([''])
 
       })
 

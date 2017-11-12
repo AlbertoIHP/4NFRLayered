@@ -14,6 +14,11 @@ export class UserService {
 
   constructor( private http: Http, private authenticationService: AuthenticationService )
   {
+    this.setToken()
+  }
+
+  setToken()
+  {
     this.headers = new Headers(
     {
       'Authorization': 'Bearer ' + this.authenticationService.token,
@@ -21,32 +26,36 @@ export class UserService {
     });
 
     this.options = new RequestOptions({ headers: this.headers });
-
-
   }
 
   getUsers(): Observable<User[]>
   {
+    this.setToken()
     return this.http.get(this.base, this.options).map((res: Response) => res.json());
   }
 
   registerUser(user : User)
   {
+    this.setToken()
     return this.http.post( this.base, JSON.stringify(user ), this.options).map((res: Response) => res.json());
 
   }
 
   getUser(id) : Observable<User>
   {
+    this.setToken()
     return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
   }
 
   editUser(user : User, id: number)
   {
+    this.setToken()
     return this.http.put(this.base+id, JSON.stringify(user ), this.options).map((res: Response) => res.json());
   }
 
-  deleteUser(id) {
+  deleteUser(id)
+  {
+    this.setToken()
     return this.http.delete(this.base+id, this.options).map((res: Response) => res.json());
   }
 
