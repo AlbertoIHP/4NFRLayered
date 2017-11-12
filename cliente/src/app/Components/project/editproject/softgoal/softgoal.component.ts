@@ -51,8 +51,6 @@ export class SoftgoalComponent implements OnInit {
 
 
 
-
-
   //DATATABLE
   @ViewChild(MatPaginator) paginator: MatPaginator
   @ViewChild('filter') filter: ElementRef

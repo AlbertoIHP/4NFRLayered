@@ -3,7 +3,7 @@
 
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Informacion personal</ng-template>
+      <ng-template matStepLabel>Información personal</ng-template>
 
       <div class="row">
         <div class="col s4">
@@ -79,8 +79,8 @@
 
 
   <mat-step>
-    <ng-template matStepLabel>Confirmacion de correo</ng-template>
-    Un correo ha sido enviado a la direccion de correo electronico {{this.newUser.email}}, para poder hacer uso de la plataforma es necesario confirmar dicho correo.
+    <ng-template matStepLabel>Confirmación de correo</ng-template>
+    Un correo ha sido enviado a la dirección de correo electrónico {{this.newUser.email}}, para poder hacer uso de la plataforma es necesario confirmar dicho correo.
     <div class="row">
     <div class="col s12">
       <button mat-button matStepperPrevious style="width: 100%" (click)="onNoClick()">Finalizar</button>

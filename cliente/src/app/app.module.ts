@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatNativeDateModule, MatDatepickerModule, MatListModule, MatStepperModule, MatCardModule, MatGridListModule, MatButtonToggleModule, MatTabsModule, MatInputModule , MatSelectModule, MatDialogModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule, MatMenuModule, MatIconModule } from '@angular/material';
+import { MatNativeDateModule, MatDatepickerModule, MatListModule, MatStepperModule, MatCardModule, MatGridListModule, MatButtonToggleModule, MatTabsModule, MatInputModule , MatSelectModule, MatDialogModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule, MatMenuModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
 
 //Componentes
@@ -192,6 +192,7 @@ import { routing, appRoutingProviders } from './Routes/router.module';
     MatListModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTooltipModule,
     ChartsModule
   ],
   providers: [

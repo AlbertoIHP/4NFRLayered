@@ -18,6 +18,11 @@ export class AddstakeComponent implements OnInit {
   private stakeholderService: any
   private isntGeneralInfo: boolean
   private isntSigthInfo: boolean
+  private position = 'above';
+  private infoNombre = "¿Qué es un stakeholder? Un stakeholder es una persona que está interesada en utilizar el sistema, en general son los usuarios que usan el sistema y quienes son afectados por el funcionamiento de este de alguna manera. Por ejemplo: En un sistema de administración de edificios así se deberían ingresar los stakeholders: Conserje, Administrador, …, etc."
+  private infoDescripcion = "¿Qué es la descripción de un stakeholder? Describe en forma general lo que hace un determinado stakeholder y cuales son sus características. Por ejemplo: Stakeholder conserje. Descripción: Se encarga de realizar acciones administrativas en el edificio, cuenta con determinados privilegios.";
+  private infoFuncion = "¿Qué es la función de un stakeholder? La función de un stakeholder es la función que desempeñará cuando el sistema esté realizada, y permite saber de qué manera lo afectará. Por ejemplo: Stakeholder conserje. Función: Registrar uso de espacios comunes… etc.";
+  private infoProfesion = "¿Qué es la profesión de un stakeholder? Es la profesión u oficio que realiza el stakeholder. Por ejemplo: Stakeholder conserje. Profesión: Conserje, Capacitación en Seguridad para Conserje";
 
   constructor(
     private _formBuilder: FormBuilder,

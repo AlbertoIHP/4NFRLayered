@@ -5,10 +5,10 @@
       <ng-template matStepLabel>Non Functional Requirement</ng-template>
 
       <div class="row">
-        <div class="col s12">
+        <div class="col s11">
 
           <mat-form-field style="width: 100%">
-            <mat-select placeholder="Seleccione una categoria de NFR" formControlName="firstCtrl" required  >
+            <mat-select placeholder="Seleccione una categoría de NFR" formControlName="firstCtrl" required  >
               <mat-option *ngFor="let category of totalCategories" [value]="category.id" (click)="changeCategory(category)">
                 {{ category.name }}
               </mat-option>
@@ -16,11 +16,14 @@
           </mat-form-field>
 
         </div>
+        <div class="col s1" style="margin-top: 28px">
+          <mat-icon [matTooltip]="infoCategoria" [matTooltipPosition]="position">info</mat-icon>
+        </div>
       </div>
 
 
       <div class="row">
-        <div class="col s12">
+        <div class="col s11">
 
           <mat-form-field style="width: 100%">
             <mat-select placeholder="Seleccione un NFR" formControlName="firstCtrl" required [(ngModel)]="newSoftgoalnfr.nfrs_id" (ngModelChange)="checkGeneralInfo()" >
@@ -31,12 +34,15 @@
           </mat-form-field>
 
         </div>
+        <div class="col s1" style="margin-top: 28px">
+          <mat-icon [matTooltip]="infoNFR" [matTooltipPosition]="position">info</mat-icon>
+        </div>
       </div>
 
 
       <div class="row">
         <div class="col s12">
-          <label for="">Definicion:</label>
+          <label for="">Definición:</label>
           <br>
           <p>{{nfrDetail}}</p>
         </div>
@@ -58,7 +64,7 @@
 
 
       <div class="row">
-        <div class="col s12">
+        <div class="col s11">
 
           <mat-form-field style="width: 100%">
             <mat-select placeholder="Seleccione un Softgoal" formControlName="secondCtrl" required [(ngModel)]="newSoftgoalnfr.softgoals_id" (ngModelChange)="checkSigthInfo()" >
@@ -68,6 +74,9 @@
             </mat-select>
           </mat-form-field>
 
+        </div>
+        <div class="col s1" style="margin-top: 28px">
+          <mat-icon [matTooltip]="infoSoft" [matTooltipPosition]="position">info</mat-icon>
         </div>
       </div>
 
