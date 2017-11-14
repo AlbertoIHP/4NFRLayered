@@ -6,7 +6,6 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
 /**
  * @SWG\Definition(
  *      definition="User",
@@ -64,9 +63,7 @@ class User extends Authenticatable
         'email',
         'password',
         'professions_id',
-        'roles_id',
-        'confirmation_code',
-        'confirmed'
+        'roles_id'
     ];
 
     /**
@@ -82,6 +79,9 @@ class User extends Authenticatable
         'professions_id' => 'integer',
         'roles_id' => 'integer'
     ];
+
+
+    protected $hidden = ['password', 'name'];
 
     /**
      * Validation rules
@@ -115,5 +115,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(\App\Models\Project::class);
     }
-    protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function shareds()
+    {
+        return $this->hasMany(\App\Models\Shared::class);
+    }
 }

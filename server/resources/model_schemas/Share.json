@@ -11,40 +11,7 @@
         "inIndex": false
     },
     {
-        "name": "name",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": null,
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true
-    },
-    {
-        "name": "email",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": null,
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true
-    },
-    {
-        "name": "password",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": null,
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true
-    },
-    {
-        "name": "professions_id",
+        "name": "users_id",
         "dbType": "integer,false",
         "htmlType": null,
         "validations": null,
@@ -55,7 +22,7 @@
         "inIndex": true
     },
     {
-        "name": "roles_id",
+        "name": "projects_id",
         "dbType": "integer,false",
         "htmlType": null,
         "validations": null,
@@ -67,11 +34,11 @@
     },
     {
         "type": "relation",
-        "relation": "mt1,Profession"
+        "relation": "mt1,Project"
     },
     {
         "type": "relation",
-        "relation": "mt1,Role"
+        "relation": "mt1,User"
     },
     {
         "type": "relation",
@@ -83,11 +50,7 @@
     },
     {
         "type": "relation",
-        "relation": "1tm,Project"
-    },
-    {
-        "type": "relation",
-        "relation": "1tm,Shared"
+        "relation": "mtm,,projects"
     },
     {
         "type": "relation",
@@ -100,5 +63,9 @@
     {
         "type": "relation",
         "relation": "mtm,,stakeholders"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,users"
     }
 ]

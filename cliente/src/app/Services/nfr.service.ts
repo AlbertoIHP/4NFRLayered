@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { AuthenticationService } from './authentication.service';
 import { Nfr } from '../Models/Nfr.model';
-
+import { address } from './address'
 
 @Injectable()
 export class NfrService {
-  public base: string = "http://localhost:8000/api/v1/nfrs/";
+  public base: string = address+"/nfrs";
   public options: RequestOptions;
   public headers: Headers;
 

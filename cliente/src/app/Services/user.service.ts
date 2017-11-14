@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { AuthenticationService } from './authentication.service';
 import { User } from '../Models/User.model';
-
+import { address } from './address'
 
 @Injectable()
 export class UserService {
-  public base: string = "http://localhost:8000/api/v1/users/";
+  public base: string = address+"/users";
   public options: RequestOptions;
   public headers: Headers;
 

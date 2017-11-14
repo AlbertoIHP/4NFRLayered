@@ -105,6 +105,10 @@
     },
     {
         "type": "relation",
+        "relation": "1tm,Shared"
+    },
+    {
+        "type": "relation",
         "relation": "mtm,,softgoals"
     },
     {

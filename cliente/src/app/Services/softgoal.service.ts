@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { AuthenticationService } from './authentication.service';
 import { Softgoal } from '../Models/Softgoal.model';
-
+import { address } from './address'
 
 @Injectable()
 export class SoftgoalService {
-  public base: string = "http://localhost:8000/api/v1/softgoals/";
+  public base: string = address+"/softgoals";
   public options: RequestOptions;
   public headers: Headers;
 

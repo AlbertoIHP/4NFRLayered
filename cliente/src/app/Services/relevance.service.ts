@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { AuthenticationService } from './authentication.service';
 import { Relevance } from '../Models/Relevance.model';
-
+import { address } from './address'
 
 @Injectable()
 export class RelevanceService {
-  public base: string = "http://localhost:8000/api/v1/relevances/";
+  public base: string = address+"/relevances";
   public options: RequestOptions;
   public headers: Headers;
 

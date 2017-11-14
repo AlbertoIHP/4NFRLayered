@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { AuthenticationService } from './authentication.service';
 import { Stakeholder } from '../Models/Stakeholder.model';
-
+import { address } from './address'
 
 @Injectable()
 export class StakeholderService {
-  public base: string = "http://localhost:8000/api/v1/stakeholders/";
+  public base: string = address+"/stakeholders";
   public options: RequestOptions;
   public headers: Headers;
 

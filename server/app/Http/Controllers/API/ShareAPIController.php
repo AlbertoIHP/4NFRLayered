@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Requests\API\CreateUserAPIRequest;
-use App\Http\Requests\API\UpdateUserAPIRequest;
-use App\Models\User;
-use App\Repositories\UserRepository;
+use App\Http\Requests\API\CreateShareAPIRequest;
+use App\Http\Requests\API\UpdateShareAPIRequest;
+use App\Models\Share;
+use App\Repositories\ShareRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
@@ -13,18 +13,18 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
 /**
- * Class UserController
+ * Class ShareController
  * @package App\Http\Controllers\API
  */
 
-class UserAPIController extends AppBaseController
+class ShareAPIController extends AppBaseController
 {
-    /** @var  UserRepository */
-    private $userRepository;
+    /** @var  ShareRepository */
+    private $shareRepository;
 
-    public function __construct(UserRepository $userRepo)
+    public function __construct(ShareRepository $shareRepo)
     {
-        $this->userRepository = $userRepo;
+        $this->shareRepository = $shareRepo;
     }
 
     /**
@@ -32,10 +32,10 @@ class UserAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Get(
-     *      path="/users",
-     *      summary="Get a listing of the Users.",
-     *      tags={"User"},
-     *      description="Get all Users",
+     *      path="/shares",
+     *      summary="Get a listing of the Shares.",
+     *      tags={"Share"},
+     *      description="Get all Shares",
      *      produces={"application/json"},
      *      @SWG\Response(
      *          response=200,
@@ -49,7 +49,7 @@ class UserAPIController extends AppBaseController
      *              @SWG\Property(
      *                  property="data",
      *                  type="array",
-     *                  @SWG\Items(ref="#/definitions/User")
+     *                  @SWG\Items(ref="#/definitions/Share")
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -61,29 +61,29 @@ class UserAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->userRepository->pushCriteria(new RequestCriteria($request));
-        $this->userRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $users = $this->userRepository->all();
+        $this->shareRepository->pushCriteria(new RequestCriteria($request));
+        $this->shareRepository->pushCriteria(new LimitOffsetCriteria($request));
+        $shares = $this->shareRepository->all();
 
-        return $this->sendResponse($users->toArray(), 'Users retrieved successfully');
+        return $this->sendResponse($shares->toArray(), 'Shares retrieved successfully');
     }
 
     /**
-     * @param CreateUserAPIRequest $request
+     * @param CreateShareAPIRequest $request
      * @return Response
      *
      * @SWG\Post(
-     *      path="/users",
-     *      summary="Store a newly created User in storage",
-     *      tags={"User"},
-     *      description="Store User",
+     *      path="/shares",
+     *      summary="Store a newly created Share in storage",
+     *      tags={"Share"},
+     *      description="Store Share",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="User that should be stored",
+     *          description="Share that should be stored",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/User")
+     *          @SWG\Schema(ref="#/definitions/Share")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -96,7 +96,7 @@ class UserAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/User"
+     *                  ref="#/definitions/Share"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -106,13 +106,13 @@ class UserAPIController extends AppBaseController
      *      )
      * )
      */
-    public function store(CreateUserAPIRequest $request)
+    public function store(CreateShareAPIRequest $request)
     {
         $input = $request->all();
 
-        $users = $this->userRepository->create($input);
+        $shares = $this->shareRepository->create($input);
 
-        return $this->sendResponse($users->toArray(), 'User saved successfully');
+        return $this->sendResponse($shares->toArray(), 'Share saved successfully');
     }
 
     /**
@@ -120,14 +120,14 @@ class UserAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Get(
-     *      path="/users/{id}",
-     *      summary="Display the specified User",
-     *      tags={"User"},
-     *      description="Get User",
+     *      path="/shares/{id}",
+     *      summary="Display the specified Share",
+     *      tags={"Share"},
+     *      description="Get Share",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of User",
+     *          description="id of Share",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -143,7 +143,7 @@ class UserAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/User"
+     *                  ref="#/definitions/Share"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -155,30 +155,30 @@ class UserAPIController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var User $user */
-        $user = $this->userRepository->findWithoutFail($id);
+        /** @var Share $share */
+        $share = $this->shareRepository->findWithoutFail($id);
 
-        if (empty($user)) {
-            return $this->sendError('User not found');
+        if (empty($share)) {
+            return $this->sendError('Share not found');
         }
 
-        return $this->sendResponse($user->toArray(), 'User retrieved successfully');
+        return $this->sendResponse($share->toArray(), 'Share retrieved successfully');
     }
 
     /**
      * @param int $id
-     * @param UpdateUserAPIRequest $request
+     * @param UpdateShareAPIRequest $request
      * @return Response
      *
      * @SWG\Put(
-     *      path="/users/{id}",
-     *      summary="Update the specified User in storage",
-     *      tags={"User"},
-     *      description="Update User",
+     *      path="/shares/{id}",
+     *      summary="Update the specified Share in storage",
+     *      tags={"Share"},
+     *      description="Update Share",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of User",
+     *          description="id of Share",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -186,9 +186,9 @@ class UserAPIController extends AppBaseController
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="User that should be updated",
+     *          description="Share that should be updated",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/User")
+     *          @SWG\Schema(ref="#/definitions/Share")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -201,7 +201,7 @@ class UserAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/User"
+     *                  ref="#/definitions/Share"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -211,20 +211,20 @@ class UserAPIController extends AppBaseController
      *      )
      * )
      */
-    public function update($id, UpdateUserAPIRequest $request)
+    public function update($id, UpdateShareAPIRequest $request)
     {
         $input = $request->all();
 
-        /** @var User $user */
-        $user = $this->userRepository->findWithoutFail($id);
+        /** @var Share $share */
+        $share = $this->shareRepository->findWithoutFail($id);
 
-        if (empty($user)) {
-            return $this->sendError('User not found');
+        if (empty($share)) {
+            return $this->sendError('Share not found');
         }
 
-        $user = $this->userRepository->update($input, $id);
+        $share = $this->shareRepository->update($input, $id);
 
-        return $this->sendResponse($user->toArray(), 'User updated successfully');
+        return $this->sendResponse($share->toArray(), 'Share updated successfully');
     }
 
     /**
@@ -232,14 +232,14 @@ class UserAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Delete(
-     *      path="/users/{id}",
-     *      summary="Remove the specified User from storage",
-     *      tags={"User"},
-     *      description="Delete User",
+     *      path="/shares/{id}",
+     *      summary="Remove the specified Share from storage",
+     *      tags={"Share"},
+     *      description="Delete Share",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of User",
+     *          description="id of Share",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -267,15 +267,15 @@ class UserAPIController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var User $user */
-        $user = $this->userRepository->findWithoutFail($id);
+        /** @var Share $share */
+        $share = $this->shareRepository->findWithoutFail($id);
 
-        if (empty($user)) {
-            return $this->sendError('User not found');
+        if (empty($share)) {
+            return $this->sendError('Share not found');
         }
 
-        $user->delete();
+        $share->delete();
 
-        return $this->sendResponse($id, 'User deleted successfully');
+        return $this->sendResponse($id, 'Share deleted successfully');
     }
 }

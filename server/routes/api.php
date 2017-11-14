@@ -30,6 +30,7 @@ Route::group(['middleware' => ['cors','jwt.auth']], function(){
 	Route::resource('v1/functionalities', 'FunctionalityAPIController');
 	Route::resource('v1/areas', 'AreaAPIController');
 	Route::resource('v1/permises', 'PermiseAPIController');	
+	Route::resource('v1/shares', 'ShareAPIController');
 });
 
 Route::group(['middleware' => ['cors']], function(){
@@ -47,6 +48,8 @@ Route::group(['middleware' => ['cors']], function(){
 	Route::resource('v1/professions', 'ProfessionAPIController');
 
 });
+
+
 
 
 
