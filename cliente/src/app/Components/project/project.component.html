@@ -1,6 +1,6 @@
 <div *ngIf="alive">
 
- <div class="row" > 
+ <div class="row" >
   <div class="col s1" >
   <input (click)="changeSearch()" type="checkbox" id="test5" />
   <label for="test5" class="selectRaro"></label>
@@ -38,6 +38,11 @@
                 <mat-icon >remove_red_eye</mat-icon>
               </button>
 
+
+              <button  mat-icon-button (click) = "addMate(row)" >
+                <mat-icon >group_add</mat-icon>
+              </button>
+
       </mat-cell>
 
 
@@ -47,7 +52,7 @@
       <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
     </ng-container>
-    
+
 
     <ng-container matColumnDef="Descripcion">
       <mat-header-cell *matHeaderCellDef> Descripción  </mat-header-cell>

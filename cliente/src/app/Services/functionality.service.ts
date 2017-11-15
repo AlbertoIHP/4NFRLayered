@@ -44,7 +44,7 @@ export class FunctionalityService {
   getFunctionality(id) : Observable<Functionality>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editFunctionality(func: Functionality, id: number)

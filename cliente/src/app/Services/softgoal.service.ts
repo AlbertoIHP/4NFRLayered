@@ -44,13 +44,13 @@ export class SoftgoalService {
   getSoftgoal(id) : Observable<Softgoal>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editSoftgoal(soft : Softgoal, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(soft ), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(soft ), this.options).map((res: Response) => res.json());
   }
 
   deleteSoftgoal(id)

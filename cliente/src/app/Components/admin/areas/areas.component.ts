@@ -51,6 +51,9 @@ export class AreasComponent implements OnInit {
     public events: EventService
     )
   {
+    this.events.sharedHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
 
     this.events.projectHasClicked.subscribe( data => {
       this.checkEvent.unsubscribe()

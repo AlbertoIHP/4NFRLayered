@@ -14,6 +14,7 @@ export class EventService {
     public openCategory: any
     public openProfession: any
     public openRelevance:any
+    public openAddMate: any
 
     //Eventos para las TAB de editProject
     public openStake: any
@@ -24,6 +25,7 @@ export class EventService {
     //Eventos para la destruccion de componentes
     public adminHasClicked: any
     public projectHasClicked: any
+    public sharedHasClicked: any
     public editProjectHasClicked: any
 
     //Evento global que comunica cambios en la persistencia de los datos
@@ -46,6 +48,10 @@ export class EventService {
       else if( index === 3 )
       {
         this.openNon.emit()
+      }
+      else if( index === 4 )
+      {
+        this.openAddMate.emit()
       }
 
 
@@ -71,6 +77,8 @@ export class EventService {
         this.adminHasClicked = new EventEmitter()
         this.projectHasClicked = new EventEmitter()
         this.editProjectHasClicked = new EventEmitter()
+        this.sharedHasClicked = new EventEmitter()
+        this.openAddMate = new EventEmitter()
 
     }
 
@@ -83,6 +91,12 @@ export class EventService {
     {
       this.editProjectHasClicked.emit()
     }
+
+    public clickShared()
+    {
+      this.sharedHasClicked.emit()
+    }
+
 
     public clickProject()
     {

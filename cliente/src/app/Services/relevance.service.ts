@@ -45,13 +45,13 @@ export class RelevanceService {
   getRelevance(id) : Observable<Relevance>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editRelevance(relevance: Relevance, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(relevance), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(relevance), this.options).map((res: Response) => res.json());
   }
 
   deleteRelevance(id)

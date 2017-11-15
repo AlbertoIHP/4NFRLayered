@@ -8,8 +8,11 @@ import { EventService } from '../../../Services/events.service'
   styleUrls: ['./editproject.component.css']
 })
 export class EditprojectComponent implements OnInit {
-  public currentTab: any
-  public alive: boolean
+  private currentTab: any
+  private alive: boolean
+  private currentProject: any
+  private isOwner: any
+  private currentUser: any
 
   constructor(private events: EventService, private router: Router)
   {
@@ -26,6 +29,20 @@ export class EditprojectComponent implements OnInit {
       this.events.projectHasClicked.subscribe( data => {
         this.alive = false
       })
+
+
+      this.currentProject = JSON.parse(localStorage.getItem('currentProject'))
+      this.currentUser = JSON.parse(localStorage.getItem('userInfo'))
+
+      if( parseInt(this.currentProject.users_id ) === this.currentUser.id )
+      {
+        this.isOwner = true
+      }
+      else
+      {
+        this.isOwner = false
+      }
+
     }
     else
     {
@@ -51,6 +68,10 @@ export class EditprojectComponent implements OnInit {
     else if( index === 3 )
     {
       this.currentTab = 3
+    }
+    else if( index === 4)
+    {
+      this.currentTab = 4
     }
 
   }

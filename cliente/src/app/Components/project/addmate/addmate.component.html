@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col s11">
+    <label for="user">Ingrese el correo del usuario a invitar</label>
+    <input matInput style="width: 100%" [(ngModel)]="userToFind" (ngModelChange)="verifyUser()" >
+  </div>
+  <div class="col s1" style="margin-top: 33px">
+    <mat-icon style="color: green" *ngIf="!isntCorrect">check</mat-icon>
+    <mat-icon style="color: red" *ngIf="isntCorrect">clear</mat-icon>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <button mat-button style="width: 100%" disabled="{{isntCorrect}}" (click)="addMate()" >Agregar <mat-icon>add</mat-icon> </button>
+  </div>
+</div>

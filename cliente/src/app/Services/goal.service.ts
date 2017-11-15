@@ -44,13 +44,13 @@ export class GoalService {
   getGoal(id) : Observable<Goal>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editGoal(goal: Goal, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(goal), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(goal), this.options).map((res: Response) => res.json());
   }
 
   deleteGoal(id)

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @SWG\Definition(
- *      definition="Share",
+ *      definition="Collaborator",
  *      required={""},
  *      @SWG\Property(
  *          property="id",
@@ -29,11 +29,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      )
  * )
  */
-class Share extends Model
+class Collaborator extends Model
 {
     use SoftDeletes;
 
-    public $table = 'shareds';
+    public $table = 'collaborators';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';

@@ -55,6 +55,11 @@ export class AdminnfrComponent implements OnInit {
     public events: EventService
     )
   {
+    this.events.sharedHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+
     this.checkEvent = this.events.openNfr.subscribe( data => {
       this.openAddModal()
     })

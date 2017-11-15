@@ -44,13 +44,13 @@ export class NfrService {
   getNfr(id) : Observable<Nfr>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editNfr(nfr: Nfr, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(nfr), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(nfr), this.options).map((res: Response) => res.json());
   }
 
   deleteNfr(id)

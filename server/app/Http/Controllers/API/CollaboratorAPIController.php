@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Requests\API\CreateShareAPIRequest;
-use App\Http\Requests\API\UpdateShareAPIRequest;
-use App\Models\Share;
-use App\Repositories\ShareRepository;
+use App\Http\Requests\API\CreateCollaboratorAPIRequest;
+use App\Http\Requests\API\UpdateCollaboratorAPIRequest;
+use App\Models\Collaborator;
+use App\Repositories\CollaboratorRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
@@ -13,18 +13,18 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
 /**
- * Class ShareController
+ * Class CollaboratorController
  * @package App\Http\Controllers\API
  */
 
-class ShareAPIController extends AppBaseController
+class CollaboratorAPIController extends AppBaseController
 {
-    /** @var  ShareRepository */
-    private $shareRepository;
+    /** @var  CollaboratorRepository */
+    private $collaboratorRepository;
 
-    public function __construct(ShareRepository $shareRepo)
+    public function __construct(CollaboratorRepository $collaboratorRepo)
     {
-        $this->shareRepository = $shareRepo;
+        $this->collaboratorRepository = $collaboratorRepo;
     }
 
     /**
@@ -32,10 +32,10 @@ class ShareAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Get(
-     *      path="/shares",
-     *      summary="Get a listing of the Shares.",
-     *      tags={"Share"},
-     *      description="Get all Shares",
+     *      path="/collaborators",
+     *      summary="Get a listing of the Collaborators.",
+     *      tags={"Collaborator"},
+     *      description="Get all Collaborators",
      *      produces={"application/json"},
      *      @SWG\Response(
      *          response=200,
@@ -49,7 +49,7 @@ class ShareAPIController extends AppBaseController
      *              @SWG\Property(
      *                  property="data",
      *                  type="array",
-     *                  @SWG\Items(ref="#/definitions/Share")
+     *                  @SWG\Items(ref="#/definitions/Collaborator")
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -61,29 +61,29 @@ class ShareAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->shareRepository->pushCriteria(new RequestCriteria($request));
-        $this->shareRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $shares = $this->shareRepository->all();
+        $this->collaboratorRepository->pushCriteria(new RequestCriteria($request));
+        $this->collaboratorRepository->pushCriteria(new LimitOffsetCriteria($request));
+        $collaborators = $this->collaboratorRepository->all();
 
-        return $this->sendResponse($shares->toArray(), 'Shares retrieved successfully');
+        return $this->sendResponse($collaborators->toArray(), 'Collaborators retrieved successfully');
     }
 
     /**
-     * @param CreateShareAPIRequest $request
+     * @param CreateCollaboratorAPIRequest $request
      * @return Response
      *
      * @SWG\Post(
-     *      path="/shares",
-     *      summary="Store a newly created Share in storage",
-     *      tags={"Share"},
-     *      description="Store Share",
+     *      path="/collaborators",
+     *      summary="Store a newly created Collaborator in storage",
+     *      tags={"Collaborator"},
+     *      description="Store Collaborator",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="Share that should be stored",
+     *          description="Collaborator that should be stored",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/Share")
+     *          @SWG\Schema(ref="#/definitions/Collaborator")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -96,7 +96,7 @@ class ShareAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/Share"
+     *                  ref="#/definitions/Collaborator"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -106,13 +106,13 @@ class ShareAPIController extends AppBaseController
      *      )
      * )
      */
-    public function store(CreateShareAPIRequest $request)
+    public function store(CreateCollaboratorAPIRequest $request)
     {
         $input = $request->all();
 
-        $shares = $this->shareRepository->create($input);
+        $collaborators = $this->collaboratorRepository->create($input);
 
-        return $this->sendResponse($shares->toArray(), 'Share saved successfully');
+        return $this->sendResponse($collaborators->toArray(), 'Collaborator saved successfully');
     }
 
     /**
@@ -120,14 +120,14 @@ class ShareAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Get(
-     *      path="/shares/{id}",
-     *      summary="Display the specified Share",
-     *      tags={"Share"},
-     *      description="Get Share",
+     *      path="/collaborators/{id}",
+     *      summary="Display the specified Collaborator",
+     *      tags={"Collaborator"},
+     *      description="Get Collaborator",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of Share",
+     *          description="id of Collaborator",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -143,7 +143,7 @@ class ShareAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/Share"
+     *                  ref="#/definitions/Collaborator"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -155,30 +155,30 @@ class ShareAPIController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var Share $share */
-        $share = $this->shareRepository->findWithoutFail($id);
+        /** @var Collaborator $collaborator */
+        $collaborator = $this->collaboratorRepository->findWithoutFail($id);
 
-        if (empty($share)) {
-            return $this->sendError('Share not found');
+        if (empty($collaborator)) {
+            return $this->sendError('Collaborator not found');
         }
 
-        return $this->sendResponse($share->toArray(), 'Share retrieved successfully');
+        return $this->sendResponse($collaborator->toArray(), 'Collaborator retrieved successfully');
     }
 
     /**
      * @param int $id
-     * @param UpdateShareAPIRequest $request
+     * @param UpdateCollaboratorAPIRequest $request
      * @return Response
      *
      * @SWG\Put(
-     *      path="/shares/{id}",
-     *      summary="Update the specified Share in storage",
-     *      tags={"Share"},
-     *      description="Update Share",
+     *      path="/collaborators/{id}",
+     *      summary="Update the specified Collaborator in storage",
+     *      tags={"Collaborator"},
+     *      description="Update Collaborator",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of Share",
+     *          description="id of Collaborator",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -186,9 +186,9 @@ class ShareAPIController extends AppBaseController
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="Share that should be updated",
+     *          description="Collaborator that should be updated",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/Share")
+     *          @SWG\Schema(ref="#/definitions/Collaborator")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -201,7 +201,7 @@ class ShareAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/Share"
+     *                  ref="#/definitions/Collaborator"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -211,20 +211,20 @@ class ShareAPIController extends AppBaseController
      *      )
      * )
      */
-    public function update($id, UpdateShareAPIRequest $request)
+    public function update($id, UpdateCollaboratorAPIRequest $request)
     {
         $input = $request->all();
 
-        /** @var Share $share */
-        $share = $this->shareRepository->findWithoutFail($id);
+        /** @var Collaborator $collaborator */
+        $collaborator = $this->collaboratorRepository->findWithoutFail($id);
 
-        if (empty($share)) {
-            return $this->sendError('Share not found');
+        if (empty($collaborator)) {
+            return $this->sendError('Collaborator not found');
         }
 
-        $share = $this->shareRepository->update($input, $id);
+        $collaborator = $this->collaboratorRepository->update($input, $id);
 
-        return $this->sendResponse($share->toArray(), 'Share updated successfully');
+        return $this->sendResponse($collaborator->toArray(), 'Collaborator updated successfully');
     }
 
     /**
@@ -232,14 +232,14 @@ class ShareAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Delete(
-     *      path="/shares/{id}",
-     *      summary="Remove the specified Share from storage",
-     *      tags={"Share"},
-     *      description="Delete Share",
+     *      path="/collaborators/{id}",
+     *      summary="Remove the specified Collaborator from storage",
+     *      tags={"Collaborator"},
+     *      description="Delete Collaborator",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of Share",
+     *          description="id of Collaborator",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -267,15 +267,15 @@ class ShareAPIController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var Share $share */
-        $share = $this->shareRepository->findWithoutFail($id);
+        /** @var Collaborator $collaborator */
+        $collaborator = $this->collaboratorRepository->findWithoutFail($id);
 
-        if (empty($share)) {
-            return $this->sendError('Share not found');
+        if (empty($collaborator)) {
+            return $this->sendError('Collaborator not found');
         }
 
-        $share->delete();
+        $collaborator->delete();
 
-        return $this->sendResponse($id, 'Share deleted successfully');
+        return $this->sendResponse($id, 'Collaborator deleted successfully');
     }
 }

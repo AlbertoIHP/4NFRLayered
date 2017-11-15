@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Share;
+use App\Models\Collaborator;
 use Form;
 use Yajra\Datatables\Services\DataTable;
 
-class ShareDataTable extends DataTable
+class CollaboratorDataTable extends DataTable
 {
 
     /**
@@ -16,7 +16,7 @@ class ShareDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', 'shares.datatables_actions')
+            ->addColumn('action', 'collaborators.datatables_actions')
             ->make(true);
     }
 
@@ -27,9 +27,9 @@ class ShareDataTable extends DataTable
      */
     public function query()
     {
-        $shares = Share::query();
+        $collaborators = Collaborator::query();
 
-        return $this->applyScopes($shares);
+        return $this->applyScopes($collaborators);
     }
 
     /**
@@ -84,6 +84,6 @@ class ShareDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'shares';
+        return 'collaborators';
     }
 }

@@ -49,7 +49,10 @@ export class CategoriesComponent implements OnInit {
     public categoryService: CategoryService,
     public events: EventService
     )
-  {
+  {    this.events.sharedHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
     this.events.projectHasClicked.subscribe( data => {
       this.checkEvent.unsubscribe()
     })

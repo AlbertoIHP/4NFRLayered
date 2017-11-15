@@ -44,7 +44,7 @@ export class SoftgoalnfrService {
   getSoftgoalNfr(id) : Observable<SoftgoalNfr>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editSoftgoalNfr(soft : SoftgoalNfr, id: number)
@@ -56,7 +56,7 @@ export class SoftgoalnfrService {
   deleteSoftgoalNfr(id)
   {
     this.setToken()
-    return this.http.delete(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.delete(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
 

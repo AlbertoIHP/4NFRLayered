@@ -121,16 +121,9 @@ class Project extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function shareds()
-    {
-        return $this->hasMany(\App\Models\Shared::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
     public function stakeholders()
     {
         return $this->hasMany(\App\Models\Stakeholder::class);
     }
+    protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];
 }

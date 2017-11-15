@@ -44,13 +44,13 @@ export class RoleService {
   getRole(id) : Observable<Role>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editRole(rol : Role, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(rol ), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(rol ), this.options).map((res: Response) => res.json());
   }
 
   deleteRole(id)

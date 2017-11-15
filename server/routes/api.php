@@ -29,8 +29,8 @@ Route::group(['middleware' => ['cors','jwt.auth']], function(){
 	Route::resource('v1/nfrs', 'NfrAPIController');
 	Route::resource('v1/functionalities', 'FunctionalityAPIController');
 	Route::resource('v1/areas', 'AreaAPIController');
-	Route::resource('v1/permises', 'PermiseAPIController');	
-	Route::resource('v1/shares', 'ShareAPIController');
+	Route::resource('v1/permises', 'PermiseAPIController');
+	Route::resource('v1/collaborators', 'CollaboratorAPIController');	
 });
 
 Route::group(['middleware' => ['cors']], function(){

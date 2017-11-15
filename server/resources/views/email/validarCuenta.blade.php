@@ -4,6 +4,6 @@
 <p>Su contraseña es: {{ $password }}</p>
 <p>Su email es: {{ $email }} </p>
 
-<a href="http://localhost:8000/api/register/verify/{{ $confirmation_code }}">Validar mi cuenta</a>
+<a href="https://fourlayeredapi.herokuapp.com/api/register/verify/{{ $confirmation_code }}">Validar mi cuenta</a>
 
 

@@ -44,13 +44,13 @@ export class ProfessionService {
   getProfession(id) : Observable<Profession>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editProfession(prof: Profession, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(prof), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(prof), this.options).map((res: Response) => res.json());
   }
 
   deleteProfession(id)

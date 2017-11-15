@@ -64,172 +64,172 @@ class adminmodule extends Seeder
         DB::table('nfrs')->insert([
             'name' => 'Comportamiento temporal',
             'description' => ' Los tiempos de respuesta y procesamiento y los ratios de throughput de un sistema cuando lleva a cabo sus funciones bajo condiciones determinadas en relación con un banco de pruebas (benchmark) establecido.',
-            'categories_id' => 2
+            'categories_id' => 11
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Utilización de recursos',
             'description' => 'Las cantidades y tipos de recursos utilizados cuando el software lleva a cabo su función bajo condiciones determinadas.',
-            'categories_id' => 2
+            'categories_id' => 11
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Capacidad',
             'description' => 'Grado en que los límites máximos de un parámetro de un producto o sistema software cumplen con los requisitos.',
-            'categories_id' => 2
+            'categories_id' => 11
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Coexistencia',
             'description' => 'Capacidad del producto para coexistir con otro software independiente, en un entorno común, compartiendo recursos comunes sin detrimento.',
-            'categories_id' => 3
+            'categories_id' => 21
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Interoperabilidad',
             'description' => 'Capacidad de dos o más sistemas o componentes para intercambiar información y utilizar la información intercambiada.',
-            'categories_id' => 3
+            'categories_id' => 21
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Capacidad para reconocer su adecuación',
             'description' => 'apacidad del producto que permite al usuario entender si el software es adecuado para sus necesidades.',
-            'categories_id' => 4
+            'categories_id' => 31
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Capacidad de aprendizaje',
             'description' => 'Capacidad del producto que permite al usuario aprender su aplicación.',
-            'categories_id' => 4
+            'categories_id' => 31
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Capacidad para ser usado',
             'description' => 'Capacidad del producto que permite al usuario operarlo y controlarlo con facilidad.',
-            'categories_id' => 4
+            'categories_id' => 31
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Protección contra errores de usuario',
             'description' => 'Capacidad del sistema para proteger a los usuarios de hacer errores.',
-            'categories_id' => 4
+            'categories_id' => 31
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Estética de la interfaz de usuario',
             'description' => 'Capacidad de la interfaz de usuario  de agradar y satisfacer la interacción con el usuario.',
-            'categories_id' => 4
+            'categories_id' => 31
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Accesibilidad',
             'description' => ' Capacidad del producto que permite que sea utilizado por usuarios con determinadas características y discapacidades.',
-            'categories_id' => 4
+            'categories_id' => 31
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Madurez',
             'description' => 'Capacidad del sistema para satisfacer las necesidades de fiabilidad en condiciones normales.',
-            'categories_id' => 5
+            'categories_id' => 41
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Disponibilidad',
             'description' => 'Capacidad del sistema o componente de estar operativo y accesible para su uso cuando se requiere.',
-            'categories_id' => 5
+            'categories_id' => 41
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Tolerancia a fallos',
             'description' => 'Capacidad del sistema o componente para operar según lo previsto en presencia de fallos hardware o software.',
-            'categories_id' => 5
+            'categories_id' => 41
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Capacidad de recuperación',
             'description' => 'Capacidad del producto software para recuperar los datos directamente afectados y reestablecer el estado deseado del sistema en caso de interrupción o fallo.',
-            'categories_id' => 5
+            'categories_id' => 41
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Confidencialidad',
             'description' => 'Capacidad de protección contra el acceso de datos e información no autorizados, ya sea accidental o deliberadamente.',
-            'categories_id' => 6
+            'categories_id' => 51
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Integridad',
             'description' => 'Capacidad del sistema o componente para prevenir accesos o modificaciones no autorizados a datos o programas de ordenador.',
-            'categories_id' => 6
+            'categories_id' => 51
         ]);
 
 
         DB::table('nfrs')->insert([
             'name' => 'No repudio',
             'description' => ' Capacidad de demostrar las acciones o eventos que han tenido lugar, de manera que dichas acciones o eventos no puedan ser repudiados posteriormente.',
-            'categories_id' => 6
+            'categories_id' => 51
         ]);
 
 
         DB::table('nfrs')->insert([
             'name' => 'Responsabilidad',
             'description' => 'Capacidad de rastrear de forma inequívoca las acciones de una entidad.',
-            'categories_id' => 6
+            'categories_id' => 51
         ]);
 
 
         DB::table('nfrs')->insert([
             'name' => 'Autenticidad',
             'description' => 'Capacidad de demostrar la identidad de un sujeto o un recurso.',
-            'categories_id' => 6
+            'categories_id' => 51
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Modularidad',
             'description' => 'Capacidad de un sistema o programa de ordenador (compuesto de componentes discretos) que permite que un cambio en un componente tenga un impacto mínimo en los demás.',
-            'categories_id' => 7
+            'categories_id' => 61
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Reusabilidad',
             'description' => 'Capacidad de un activo que permite que sea utilizado en más de un sistema software o en la construcción de otros activos.',
-            'categories_id' => 7
+            'categories_id' => 61
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Analizabilidad',
             'description' => 'Facilidad con la que se puede evaluar el impacto de un determinado cambio sobre el resto del software, diagnosticar las deficiencias o causas de fallos en el software, o identificar las partes a modificar.',
-            'categories_id' => 7
+            'categories_id' => 61
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Capacidad para ser modificado',
             'description' => 'Capacidad del producto que permite que sea modificado de forma efectiva y eficiente sin introducir defectos o degradar el desempeño.',
-            'categories_id' => 7
+            'categories_id' => 61
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Capacidad para ser probado',
             'description' => 'Facilidad con la que se pueden establecer criterios de prueba para un sistema o componente y con la que se pueden llevar a cabo las pruebas para determinar si se cumplen dichos criterios.',
-            'categories_id' => 7
+            'categories_id' => 61
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Adaptabilidad',
             'description' => 'Capacidad del producto que le permite ser adaptado de forma efectiva y eficiente a diferentes entornos determinados de hardware, software, operacionales o de uso.',
-            'categories_id' => 8
+            'categories_id' => 71
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Capacidad para ser instalado',
             'description' => ' Facilidad con la que el producto se puede instalar y/o desinstalar de forma exitosa en un determinado entorno.',
-            'categories_id' => 8
+            'categories_id' => 71
         ]);
 
         DB::table('nfrs')->insert([
             'name' => 'Capacidad para ser reemplazado',
             'description' => ' Capacidad del producto para ser utilizado en lugar de otro producto software determinado con el mismo propósito y en el mismo entorno.',
-            'categories_id' => 8
+            'categories_id' => 71
         ]);
 
         DB::table('relevances')->insert([
@@ -399,105 +399,6 @@ class adminmodule extends Seeder
 
         DB::table('permissions')->insert([
             'roles_id' => 1,
-            'functionalities_id' => 2,
-            'write' => '1',
-            'erase' => '1',
-            'update' => '1',
-            'view' => '1'
-        ]);
-
-
-
-        DB::table('permissions')->insert([
-            'roles_id' => 1,
-            'functionalities_id' => 3,
-            'write' => '1',
-            'erase' => '1',
-            'update' => '1',
-            'view' => '1'
-        ]);
-
-
-
-        DB::table('permissions')->insert([
-            'roles_id' => 1,
-            'functionalities_id' => 4,
-            'write' => '1',
-            'erase' => '1',
-            'update' => '1',
-            'view' => '1'
-        ]);
-
-
-
-        DB::table('permissions')->insert([
-            'roles_id' => 1,
-            'functionalities_id' => 5,
-            'write' => '1',
-            'erase' => '1',
-            'update' => '1',
-            'view' => '1'
-        ]);
-
-
-
-        DB::table('permissions')->insert([
-            'roles_id' => 1,
-            'functionalities_id' => 6,
-            'write' => '1',
-            'erase' => '1',
-            'update' => '1',
-            'view' => '1'
-        ]);
-
-
-
-        DB::table('permissions')->insert([
-            'roles_id' => 1,
-            'functionalities_id' => 7,
-            'write' => '1',
-            'erase' => '1',
-            'update' => '1',
-            'view' => '1'
-        ]);
-
-
-
-        DB::table('permissions')->insert([
-            'roles_id' => 1,
-            'functionalities_id' => 8,
-            'write' => '1',
-            'erase' => '1',
-            'update' => '1',
-            'view' => '1'
-        ]);
-
-
-
-        DB::table('permissions')->insert([
-            'roles_id' => 1,
-            'functionalities_id' => 9,
-            'write' => '1',
-            'erase' => '1',
-            'update' => '1',
-            'view' => '1'
-        ]);
-
-
-
-        DB::table('permissions')->insert([
-            'roles_id' => 1,
-            'functionalities_id' => 10,
-            'write' => '1',
-            'erase' => '1',
-            'update' => '1',
-            'view' => '1'
-        ]);
-
-
-
-        DB::table('permissions')->insert([
-            'roles_id' => 1,
             'functionalities_id' => 11,
             'write' => '1',
             'erase' => '1',
@@ -509,7 +410,106 @@ class adminmodule extends Seeder
 
         DB::table('permissions')->insert([
             'roles_id' => 1,
-            'functionalities_id' => 12,
+            'functionalities_id' => 21,
+            'write' => '1',
+            'erase' => '1',
+            'update' => '1',
+            'view' => '1'
+        ]);
+
+
+
+        DB::table('permissions')->insert([
+            'roles_id' => 1,
+            'functionalities_id' => 31,
+            'write' => '1',
+            'erase' => '1',
+            'update' => '1',
+            'view' => '1'
+        ]);
+
+
+
+        DB::table('permissions')->insert([
+            'roles_id' => 1,
+            'functionalities_id' => 41,
+            'write' => '1',
+            'erase' => '1',
+            'update' => '1',
+            'view' => '1'
+        ]);
+
+
+
+        DB::table('permissions')->insert([
+            'roles_id' => 1,
+            'functionalities_id' => 51,
+            'write' => '1',
+            'erase' => '1',
+            'update' => '1',
+            'view' => '1'
+        ]);
+
+
+
+        DB::table('permissions')->insert([
+            'roles_id' => 1,
+            'functionalities_id' => 61,
+            'write' => '1',
+            'erase' => '1',
+            'update' => '1',
+            'view' => '1'
+        ]);
+
+
+
+        DB::table('permissions')->insert([
+            'roles_id' => 1,
+            'functionalities_id' => 71,
+            'write' => '1',
+            'erase' => '1',
+            'update' => '1',
+            'view' => '1'
+        ]);
+
+
+
+        DB::table('permissions')->insert([
+            'roles_id' => 1,
+            'functionalities_id' => 81,
+            'write' => '1',
+            'erase' => '1',
+            'update' => '1',
+            'view' => '1'
+        ]);
+
+
+
+        DB::table('permissions')->insert([
+            'roles_id' => 1,
+            'functionalities_id' => 91,
+            'write' => '1',
+            'erase' => '1',
+            'update' => '1',
+            'view' => '1'
+        ]);
+
+
+
+        DB::table('permissions')->insert([
+            'roles_id' => 1,
+            'functionalities_id' => 101,
+            'write' => '1',
+            'erase' => '1',
+            'update' => '1',
+            'view' => '1'
+        ]);
+
+
+
+        DB::table('permissions')->insert([
+            'roles_id' => 1,
+            'functionalities_id' => 111,
             'write' => '1',
             'erase' => '1',
             'update' => '1',

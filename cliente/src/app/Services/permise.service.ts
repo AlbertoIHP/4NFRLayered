@@ -44,13 +44,13 @@ export class PermiseService {
   getPermise(id) : Observable<Permise>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editPermise(permise: Permise, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(permise), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(permise), this.options).map((res: Response) => res.json());
   }
 
   deletePermise(id)

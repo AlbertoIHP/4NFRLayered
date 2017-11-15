@@ -1,0 +1,153 @@
+ <div class="row" >
+  <div class="col s1" >
+  <input (click)="changeSearch()" type="checkbox" id="test5" />
+  <label for="test5" class="selectRaro"></label>
+
+  </div>
+  <div class="col s11">
+  <label for="miinput">Búsqueda por Correo</label>
+  <input matInput #filter style="width: 100% !important;" id="miinput">
+  </div>
+</div>
+
+
+<div class="example-container mat-elevation-z8" >
+
+  <mat-table #table *ngIf="!searchByName" [dataSource]="sourceDatatable">
+
+
+    <ng-container matColumnDef="Acciones">
+      <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+
+      <mat-cell *matCellDef="let row" >
+
+
+              <button  mat-icon-button (click) = "goEdit(row)" >
+                <mat-icon >create</mat-icon>
+              </button>
+
+
+              <button  mat-icon-button (click) = "deleteProject(row)" >
+                <mat-icon >delete</mat-icon>
+              </button>
+
+
+              <button  mat-icon-button (click) = "goView(row)" >
+                <mat-icon >remove_red_eye</mat-icon>
+              </button>
+
+
+      </mat-cell>
+
+
+    </ng-container>
+
+    <ng-container matColumnDef="Nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Descripcion">
+      <mat-header-cell *matHeaderCellDef> Descripción  </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Area">
+      <mat-header-cell *matHeaderCellDef> Área </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.areas_id}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Creacion">
+      <mat-header-cell *matHeaderCellDef> Fecha de creación </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.date}} - {{row.time}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Deadline">
+      <mat-header-cell *matHeaderCellDef> Deadline </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.deadline}} </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="['odd', 'highlight'][row.id %2]"></mat-row>
+
+  </mat-table>
+
+
+ <mat-table #table *ngIf="searchByName" [dataSource]="sourcePorNombre">
+
+    <ng-container matColumnDef="Acciones">
+      <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+
+      <mat-cell *matCellDef="let row" >
+
+              <button  mat-icon-button (click) = "goEdit(row)" >
+                <mat-icon >create</mat-icon>
+              </button>
+
+
+              <button  mat-icon-button (click) = "deleteProject(row)" >
+                <mat-icon >delete</mat-icon>
+              </button>
+
+
+              <button  mat-icon-button (click) = "goView(row)" >
+                <mat-icon >remove_red_eye</mat-icon>
+              </button>
+
+      </mat-cell>
+
+
+    </ng-container>
+
+    <ng-container matColumnDef="Nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Descripcion">
+      <mat-header-cell *matHeaderCellDef> Descripción  </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Area">
+      <mat-header-cell *matHeaderCellDef> Área </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.areas_id}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Creacion">
+      <mat-header-cell *matHeaderCellDef> Fecha de creación </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.date}} - {{row.time}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Deadline">
+      <mat-header-cell *matHeaderCellDef> Deadline </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.deadline}} </mat-cell>
+    </ng-container>
+
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="['odd', 'highlight'][row.id %2]"></mat-row>
+
+</mat-table>
+
+
+  <mat-paginator #paginator
+                [length]="totalProjects.length"
+                [pageIndex]="0"
+                [pageSize]="5"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+
+
+</div>

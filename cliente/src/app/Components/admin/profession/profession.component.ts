@@ -53,7 +53,10 @@ export class ProfessionComponent implements OnInit {
     public professionService: ProfessionService,
     public events: EventService
     )
-  {
+  {    this.events.sharedHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
 
     this.events.projectHasClicked.subscribe( data => {
       this.checkEvent.unsubscribe()

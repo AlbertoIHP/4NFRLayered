@@ -1,0 +1,15 @@
+      <table>
+        <thead>
+          <tr>
+              <th>Acciones</th>
+              <th>Email</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let collaborator of collaborators" >
+            <td> <button mat-button (click)="deleteMate(collaborator)" ><mat-icon>delete</mat-icon></button> </td>
+            <td>{{collaborator.users_id}}</td>
+          </tr>
+        </tbody>
+      </table>

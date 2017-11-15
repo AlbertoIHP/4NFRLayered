@@ -44,7 +44,7 @@ export class StakeholderService {
   getStakeholder(id) : Observable<Stakeholder>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editStakeholder(stake : Stakeholder, id: number)
@@ -56,7 +56,7 @@ export class StakeholderService {
   deleteStakeholder(id)
   {
     this.setToken()
-    return this.http.delete(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.delete(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
 

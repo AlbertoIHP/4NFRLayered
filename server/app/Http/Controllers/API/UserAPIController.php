@@ -12,6 +12,11 @@ use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
+
+//CORREO TIII
+use Illuminate\Support\Facades\Mail;
+use Input;
+
 /**
  * Class UserController
  * @package App\Http\Controllers\API
@@ -106,14 +111,57 @@ class UserAPIController extends AppBaseController
      *      )
      * )
      */
-    public function store(CreateUserAPIRequest $request)
-    {
-        $input = $request->all();
+public function store(Request $request){
 
-        $users = $this->userRepository->create($input);
+    $confirmation_code = str_random(30);
+    $input = $request->all();
 
-        return $this->sendResponse($users->toArray(), 'User saved successfully');
+    $rules = [
+      'email' => 'required',
+      'password' => 'required',
+    ];
+
+
+    $data = [
+      'email' => $request->email,
+      'password' => bcrypt($request->password),
+      'name' => $request->name,
+      'roles_id' => $request->roles_id,
+      'professions_id' => $request->professions_id,
+      'confirmation_code' => $confirmation_code
+    ];
+
+    
+    try {
+
+      $validator = \Validator::make($data, $rules);
+
+      if ($validator->fails()) {
+        return [
+          'created' => false,
+          'errors' => $validator->errors()->all(),
+        ];
+      }else{
+
+        Mail::send('email.validarCuenta', 
+          ['confirmation_code' => $confirmation_code, 'email'=> $request->email, 'password' => $request->password], function ($message) {
+
+            $message->to(Input::get('email'), Input::get('nombre'))
+                ->subject('Por favor verifique su cuenta');
+
+        });
+
+
+        User::create($data);
+        return ['created' => true];
+
+
+      }
+    } catch (\Exception $e) {
+      \Log::info('Error creating user: ' . $e);
+      return \Response::json(['created' => false], 500);
     }
+  }
 
     /**
      * @param int $id
@@ -214,6 +262,7 @@ class UserAPIController extends AppBaseController
     public function update($id, UpdateUserAPIRequest $request)
     {
         $input = $request->all();
+        $input['password'] = bcrypt($request->password);
 
         /** @var User $user */
         $user = $this->userRepository->findWithoutFail($id);
@@ -278,4 +327,35 @@ class UserAPIController extends AppBaseController
 
         return $this->sendResponse($id, 'User deleted successfully');
     }
+    
+
+      public function confirm ($confirmation_code) 
+      {
+
+        error_log(json_encode($confirmation_code));
+
+        if (!$confirmation_code) 
+        {
+         return view('email.error');
+        }
+
+
+        
+        $user = User::whereConfirmationCode($confirmation_code)->first();
+
+
+        if (!$user) 
+        {
+            return view('email.error');;
+        }
+
+
+        $user->confirmed = 1;
+        $user->confirmation_code = null;
+        $user->save();
+
+        return view('email.confirmacion');
+
+      }
+
 }

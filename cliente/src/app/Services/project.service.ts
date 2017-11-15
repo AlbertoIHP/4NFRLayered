@@ -44,13 +44,13 @@ export class ProjectService {
   getProject(id) : Observable<Project>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editProject(proj: Project, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(proj), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(proj), this.options).map((res: Response) => res.json());
   }
 
   deleteProject(id)

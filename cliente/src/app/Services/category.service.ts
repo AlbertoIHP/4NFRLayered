@@ -43,19 +43,19 @@ export class CategoryService {
   getCategory(id) : Observable<Category>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editCategory(category: Category, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(category), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(category), this.options).map((res: Response) => res.json());
   }
 
   deleteCategory(id)
   {
     this.setToken()
-    return this.http.delete(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.delete(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
 

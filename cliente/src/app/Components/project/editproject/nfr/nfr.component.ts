@@ -79,6 +79,12 @@ export class NfrComponent implements OnInit {
     )
   {
 
+    this.events.sharedHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+
+
     this.events.adminHasClicked.subscribe( data => {
         this.checkEvent.unsubscribe()
     })

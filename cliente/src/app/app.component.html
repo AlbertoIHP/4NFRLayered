@@ -13,9 +13,10 @@
         </div>
 
 
-        <mat-card-content>
-          <button (click)="goProject()" mat-button style="width: 100%; margin-bottom: 2px"><mat-icon>library_books</mat-icon>Mis Proyectos</button>
-          <button *ngIf="currentUser.email === 'a.herrera07@ufromail.cl'" (click)="goAdmin()" mat-button style="width: 100%"><mat-icon>lock</mat-icon >Administracion</button>
+        <mat-card-content >
+          <button (click)="goProject()" mat-button style="width: 100%; margin-bottom: 2px; text-align: left; background-color: #ffffff;"><mat-icon>library_books</mat-icon>Mis Proyectos</button>
+          <button (click)="goShared()" mat-button style="width: 100%; margin-bottom: 2px; text-align: left; background-color: #ffffff;"><mat-icon>share</mat-icon>Proyectos en Conjunto</button>
+          <button *ngIf="currentUser.email === 'a.herrera07@ufromail.cl'" (click)="goAdmin()" mat-button style="width: 100%; text-align: left; background-color: #ffffff;"><mat-icon>lock</mat-icon >Administracion</button>
         </mat-card-content>
 
       </mat-card>

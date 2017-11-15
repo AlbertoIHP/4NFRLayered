@@ -29,6 +29,7 @@ import { GoalcostComponent } from './Components/project/viewproject/goalcost/goa
 import { NfrrelevantComponent } from './Components/project/viewproject/nfrrelevant/nfrrelevant.component';
 import { LoginComponent } from './Components/login/login.component';
 import { UserComponent } from './Components/admin/user/user.component';
+import { SharedComponent } from './Components/shared/shared.component';
 
 import { AddstakeComponent } from './Components/project/editproject/stakeholder/addstake/addstake.component';
 import { EditstakeComponent } from './Components/project/editproject/stakeholder/editstake/editstake.component';
@@ -55,7 +56,7 @@ import { EditadmnfComponent } from './Components/admin/adminnfr/editadmnf/editad
 import { AdduserComponent } from './Components/admin/user/adduser/adduser.component';
 import { EdituserComponent } from './Components/admin/user/edituser/edituser.component';
 import { AddprojectComponent } from './Components/project/addproject/addproject.component';
-
+import { AddmateComponent } from './Components/project/addmate/addmate.component';
 
 
 
@@ -83,7 +84,9 @@ import { SoftgoalService } from './Services/softgoal.service';
 import { SoftgoalnfrService } from './Services/softgoalnfr.service';
 import { StakeholderService } from './Services/stakeholder.service';
 import { UserService } from './Services/user.service';
+import { SharedService } from './Services/shared.service';
 import { routing, appRoutingProviders } from './Routes/router.module';
+import { CollaboratorsComponent } from './Components/project/editproject/collaborators/collaborators.component';
 
 
 
@@ -134,7 +137,10 @@ import { routing, appRoutingProviders } from './Routes/router.module';
     UserComponent,
     AdduserComponent,
     EdituserComponent,
-    AddprojectComponent
+    AddprojectComponent,
+    SharedComponent,
+    AddmateComponent,
+    CollaboratorsComponent
   ],
 
     entryComponents:
@@ -163,7 +169,8 @@ import { routing, appRoutingProviders } from './Routes/router.module';
     EditadmnfComponent,
     AdduserComponent,
     EdituserComponent,
-    AddprojectComponent
+    AddprojectComponent,
+    AddmateComponent
   ],
 
   imports: [
@@ -212,7 +219,8 @@ import { routing, appRoutingProviders } from './Routes/router.module';
     SoftgoalService,
     SoftgoalnfrService,
     StakeholderService,
-    UserService
+    UserService,
+    SharedService
 
   ],
   bootstrap: [AppComponent]

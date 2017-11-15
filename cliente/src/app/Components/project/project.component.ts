@@ -10,11 +10,14 @@ import { AreaService } from '../../Services/area.service'
 import { Project } from '../../Models/Project.model'
 import { ProjectService } from '../../Services/project.service'
 
+import { UserService } from '../../Services/user.service'
 
 
 import { EventService } from '../../Services/events.service'
 
 import { AddprojectComponent } from './addproject/addproject.component'
+
+import { AddmateComponent } from './addmate/addmate.component'
 
 import { EngineViewModel } from '../../Models/EngineViewModel.model'
 
@@ -47,6 +50,10 @@ import { SoftgoalNfr } from '../../Models/SoftgoalNfr.model'
 import { SoftgoalnfrService } from '../../Services/softgoalnfr.service'
 
 import { NfrService } from '../../Services/nfr.service'
+
+
+import { SharedService } from '../../Services/shared.service'
+import { Shared } from '../../Models/Shared.model'
 
 @Component({
   selector: 'app-project',
@@ -87,7 +94,11 @@ export class ProjectComponent implements OnInit {
     private goalService: GoalService,
     private softgoalService: SoftgoalService,
     private nfrService: SoftgoalnfrService,
-    private non: NfrService)
+    private non: NfrService,
+    private userService: UserService,
+    private sharedService: SharedService
+
+    )
   {
     this.alive = true
 
@@ -286,6 +297,22 @@ export class ProjectComponent implements OnInit {
 
 
   }
+
+  addMate(proyecto)
+  {
+    let dialogRef = this.dialog.open(AddmateComponent, {
+      width: '500px',
+      data:
+      {
+        project: proyecto,
+        userService: this.userService,
+        sharedService: this.sharedService,
+        shared: new Shared()
+
+      }
+    });
+  }
+
 
 
   openAddModal()

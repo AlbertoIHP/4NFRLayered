@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Project;
+use App\Models\Collaborator;
 
-class UpdateProjectRequest extends FormRequest
+class CreateCollaboratorRequest extends FormRequest
 {
 
     /**
@@ -25,6 +25,6 @@ class UpdateProjectRequest extends FormRequest
      */
     public function rules()
     {
-        return Project::$rules;
+        return Collaborator::$rules;
     }
 }

@@ -61,6 +61,9 @@ export class StakeholderComponent implements OnInit {
     private stakeholderService: StakeholderService
     )
   {
+    this.events.sharedHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
 
     this.events.adminHasClicked.subscribe( data => {
         this.checkEvent.unsubscribe()

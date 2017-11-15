@@ -17,6 +17,10 @@
       <app-nfr></app-nfr>
     </mat-tab>
 
+    <mat-tab label="Usuarios Colaboradores" *ngIf="isOwner">
+      <app-collaborators></app-collaborators>
+    </mat-tab>
+
   </mat-tab-group>
 
   <div class="fixed-action-btn">

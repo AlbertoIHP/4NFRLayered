@@ -71,6 +71,10 @@ export class GoalComponent implements OnInit {
         this.checkEvent.unsubscribe()
     })
 
+    this.events.sharedHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
     this.checkEvent = this.events.openGoal.subscribe( data => {
       this.openAddModal()
     })

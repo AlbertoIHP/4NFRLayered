@@ -66,6 +66,14 @@ export class AppComponent {
     this.router.navigate(['admin'])
   }
 
+
+  goShared()
+  {
+    this.events.clickShared()
+    this.router.navigate(['shared'])
+  }
+
+
   singOut()
   {
     localStorage.clear()

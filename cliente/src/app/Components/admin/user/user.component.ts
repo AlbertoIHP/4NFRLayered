@@ -64,6 +64,9 @@ export class UserComponent implements OnInit, OnChanges {
     public events: EventService
     )
   {
+    this.events.sharedHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
 
     this.checkEvent = this.events.openUser.subscribe( data => {
       this.openAddModal()

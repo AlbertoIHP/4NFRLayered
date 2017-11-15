@@ -72,6 +72,9 @@ export class SoftgoalComponent implements OnInit {
     private softgoalService: SoftgoalService
     )
   {
+    this.events.sharedHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
 
     this.events.adminHasClicked.subscribe( data => {
         this.checkEvent.unsubscribe()

@@ -44,7 +44,7 @@ export class UserService {
   getUser(id) : Observable<User>
   {
     this.setToken()
-    return this.http.get(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.get(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
   editUser(user : User, id: number)
@@ -56,7 +56,7 @@ export class UserService {
   deleteUser(id)
   {
     this.setToken()
-    return this.http.delete(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.delete(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Shareds extends Migration
+class Collaborators extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class Shareds extends Migration
      */
     public function up()
     {
-        Schema::create('shareds', function (Blueprint $table) {
+        Schema::create('collaborators', function (Blueprint $table) {
         $table->increments('id');
-
         $table->integer('users_id')->unsigned()->nullable();
         $table->integer('projects_id')->unsigned()->nullable();
 
@@ -35,6 +34,6 @@ class Shareds extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shareds');
+        Schema::dropIfExists('collaborators');
     }
 }

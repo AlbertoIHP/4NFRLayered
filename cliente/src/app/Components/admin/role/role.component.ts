@@ -47,6 +47,11 @@ export class RoleComponent implements OnInit {
 
   constructor ( public events: EventService, public servicioRole: RoleService, public dialog: MatDialog)
   {
+
+     this.events.sharedHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
     this.events.projectHasClicked.subscribe( data => {
       this.checkEvent.unsubscribe()
     })

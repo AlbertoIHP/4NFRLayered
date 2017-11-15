@@ -54,6 +54,11 @@ export class RelevanceComponent implements OnInit {
     )
   {
 
+     this.events.sharedHasClicked.subscribe( data => {
+        this.checkEvent.unsubscribe()
+    })
+
+
     this.events.projectHasClicked.subscribe( data => {
       this.checkEvent.unsubscribe()
     })

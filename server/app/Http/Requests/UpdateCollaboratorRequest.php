@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Requests\API;
+namespace App\Http\Requests;
 
-use App\Models\Share;
-use InfyOm\Generator\Request\APIRequest;
+use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Collaborator;
 
-class UpdateShareAPIRequest extends APIRequest
+class UpdateCollaboratorRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,6 +25,6 @@ class UpdateShareAPIRequest extends APIRequest
      */
     public function rules()
     {
-        return Share::$rules;
+        return Collaborator::$rules;
     }
 }
