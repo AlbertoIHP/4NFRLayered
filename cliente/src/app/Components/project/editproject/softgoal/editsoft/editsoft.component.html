@@ -27,7 +27,7 @@
   </mat-step>
 
   <mat-step >
-      <ng-template matStepLabel>Detalles del Softgoal</ng-template>
+      <ng-template matStepLabel>Detalles del Subgoal</ng-template>
 
       <div class="row">
         <div class="col s11">
@@ -50,7 +50,7 @@
         <div class="col s11">
 
           <mat-form-field style="width: 100%">
-            <mat-select placeholder="Relevancia del Softgoal" [(ngModel)]="newSoftgoal.relevances_id" (ngModelChange)="checkSigthInfo()" >
+            <mat-select placeholder="Relevancia del Subgoal" [(ngModel)]="newSoftgoal.relevances_id" (ngModelChange)="checkSigthInfo()" >
               <mat-option *ngFor="let relevance of totalRelevances" [value]="relevance.id">
                 {{ relevance.name }}
               </mat-option>

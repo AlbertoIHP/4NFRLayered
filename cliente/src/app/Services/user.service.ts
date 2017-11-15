@@ -50,7 +50,7 @@ export class UserService {
   editUser(user : User, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(user ), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(user ), this.options).map((res: Response) => res.json());
   }
 
   deleteUser(id)

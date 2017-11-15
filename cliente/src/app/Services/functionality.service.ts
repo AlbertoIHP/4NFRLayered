@@ -50,13 +50,13 @@ export class FunctionalityService {
   editFunctionality(func: Functionality, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(func), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(func), this.options).map((res: Response) => res.json());
   }
 
   deleteFunctionality(id)
   {
     this.setToken()
-    return this.http.delete(this.base+id, this.options).map((res: Response) => res.json());
+    return this.http.delete(this.base+'/'+id, this.options).map((res: Response) => res.json());
   }
 
 

@@ -12,13 +12,13 @@ export class NfrrelevantComponent implements OnInit {
   public goals:string[] // = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
   public data:any[]
   public detail: any
-  public type:string = 'line';
+  public type:string = 'bar';
 
   constructor()
   {
     this.engine = JSON.parse(localStorage.getItem('engine'))
     this.goals = []
-    this.data = [{data: [], label: 'Cantidad'}]
+    this.data = [{data: [], label: 'Cantidad de repeticiones'}]
 
     let maxCost = -10000
     let costStake: any

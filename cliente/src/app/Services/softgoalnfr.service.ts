@@ -50,7 +50,7 @@ export class SoftgoalnfrService {
   editSoftgoalNfr(soft : SoftgoalNfr, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(soft ), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(soft ), this.options).map((res: Response) => res.json());
   }
 
   deleteSoftgoalNfr(id)

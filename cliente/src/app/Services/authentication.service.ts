@@ -9,7 +9,7 @@ import { address } from './address'
 @Injectable()
 export class AuthenticationService {
   public token: string;
-  public base: string = "https://fourlayered.herokuapp.com/api/login";
+  public base: string = "https://fourlayeredapi.herokuapp.com/api/login";
   public headers;
   public options;
 

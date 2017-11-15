@@ -50,7 +50,7 @@ export class StakeholderService {
   editStakeholder(stake : Stakeholder, id: number)
   {
     this.setToken()
-    return this.http.put(this.base+id, JSON.stringify(stake ), this.options).map((res: Response) => res.json());
+    return this.http.put(this.base+'/'+id, JSON.stringify(stake ), this.options).map((res: Response) => res.json());
   }
 
   deleteStakeholder(id)
