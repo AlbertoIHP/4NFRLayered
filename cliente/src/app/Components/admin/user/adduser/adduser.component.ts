@@ -3,6 +3,30 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
 import { EventService } from '../../../../Services/events.service'
 
+import { User } from '../../../../Models/User.model'
+import { UserService } from '../../../../Services/user.service'
+
+import { Project } from '../../../../Models/Project.model'
+import { ProjectService } from '../../../../Services/project.service'
+
+import { Stakeholder } from '../../../../Models/Stakeholder.model'
+import { StakeholderService } from '../../../../Services/stakeholder.service'
+
+import { Goal } from '../../../../Models/Goal.model'
+import { GoalService } from '../../../../Services/goal.service'
+
+import { Softgoal } from '../../../../Models/Softgoal.model'
+import { SoftgoalService } from '../../../../Services/softgoal.service'
+
+import { SoftgoalNfr } from '../../../../Models/SoftgoalNfr.model'
+import { SoftgoalnfrService } from '../../../../Services/softgoalnfr.service'
+
+import { NfrService } from '../../../../Services/nfr.service'
+
+import * as moment from 'moment'
+
+
+
 @Component({
   selector: 'app-adduser',
   templateUrl: './adduser.component.html',
@@ -16,15 +40,28 @@ export class AdduserComponent implements OnInit {
   public totalProfessions: any
   public totalRoles: any
   public totalUsers: any
-
+  public newProject: any
   public goDescription: boolean
   public finish: boolean
+
+  public totalProjects: Project[]
+  public totalStakeholders: Stakeholder[]
+  public totalGoals: Goal[]
+  public totalSoftgoals: Softgoal[]
+  public user: User[]
 
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AdduserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public events: EventService
+    public events: EventService,
+    private projectService: ProjectService,
+    private stakeholderService : StakeholderService,
+    private goalService: GoalService,
+    private softgoalService: SoftgoalService,
+    private nfrService: SoftgoalnfrService,
+    private non: NfrService,
+    private usersService: UserService
     )
   {
     this.goDescription = true
@@ -43,6 +80,7 @@ export class AdduserComponent implements OnInit {
     this.userService.registerUser(this.newUser).subscribe(data => {
       this.events.reportChange()
       this.events.singUp(this.newUser)
+      console.log(data);
     })
   }
 
@@ -99,6 +137,11 @@ export class AdduserComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     })
+  }
+
+  normalizeData(todo : any)
+  {
+    return todo.data
   }
 
 }

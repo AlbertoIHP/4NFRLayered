@@ -11,7 +11,7 @@
           <input matInput id="name" formControlName="firstCtrl" required [(ngModel)]="newProject.name" (ngModelChange)="checkGeneralInfo()" >
         </div>
         <div class="col s6">
-          <label for="description">Descripcion</label>
+          <label for="description">Descripción</label>
           <mat-icon style="float: right;" [matTooltip]="infoDescripcion" [matTooltipPosition]="position">info</mat-icon>
           <input matInput id="description" formControlName="firstCtrl" required [(ngModel)]="newProject.description" (ngModelChange)="checkGeneralInfo()" >
         </div>
@@ -33,7 +33,7 @@
       <div class="row">
         <div class="col s11">
           <mat-form-field style="width: 100%">
-            <mat-select placeholder="Area del proyecto" formControlName="secondCtrl" required [(ngModel)]="newProject.areas_id" (ngModelChange)="checkSigthInfo()" >
+            <mat-select placeholder="Área del proyecto" formControlName="secondCtrl" required [(ngModel)]="newProject.areas_id" (ngModelChange)="checkSigthInfo()" >
               <mat-option *ngFor="let area of totalAreas" [value]="area.id">
                 {{ area.name }}
               </mat-option>

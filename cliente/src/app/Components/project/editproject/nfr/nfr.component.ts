@@ -23,6 +23,7 @@ import { NfrService } from '../../../../Services/nfr.service'
 import { AddnfrComponent } from './addnfr/addnfr.component'
 import { EditnfrComponent } from './editnfr/editnfr.component'
 
+import * as moment from 'moment'
 
 //Datatable
 import {DataSource} from '@angular/cdk/collections';
@@ -316,6 +317,39 @@ export class NfrComponent implements OnInit {
   }
 
 
+   /* addNFRExample() {
+    let exampleNFR = new SoftgoalNfr();
+    let flag = false;
+    let name1 = "Agregar estudiante";
+    let name2 = "Agregar CD's";
+    let name3 = "Libro de publicaciones";
+    let name4 = "Actualizar cuenta"
+
+    for(let i = 0; i < this.totalNfrs.length; i++) {
+      if (this.totalNfrs[i].name === name1 || this.totalNfrs[i].name === name2 || this.totalNfrs[i].name === name3 || this.totalNfrs[i].name === name4 ) {
+        flag = true;
+        break;
+      }
+    }
+
+    if(!flag) {
+      console.log("Hola")
+
+      // SOCIO
+      
+
+      // BIBLIOTECARIO
+      // Subgoals agregar estudiante
+      exampleNFR.nfrs_id = "";
+      exampleNFR.softgoals_id = this.totalSoftgoals[];
+      exampleNFR.date = moment().format('l');
+      exampleNFR.time = moment().format('LT');
+      this.softgoalnfrService.registerSoftgoalNfr(exampleNFR).subscribe( data => {})
+
+     
+    }
+    
+  }*/
 
 
 

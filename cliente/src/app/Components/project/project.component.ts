@@ -10,7 +10,7 @@ import { AreaService } from '../../Services/area.service'
 import { Project } from '../../Models/Project.model'
 import { ProjectService } from '../../Services/project.service'
 
-
+import * as moment from 'moment'
 
 import { EventService } from '../../Services/events.service'
 
@@ -56,6 +56,11 @@ import { NfrService } from '../../Services/nfr.service'
 export class ProjectComponent implements OnInit {
   public totalProjects: Project[]
   public totalAreas: Area[]
+  public newProject: any
+  public totalStakeholders: Stakeholder[]
+  public totalGoals: Goal[]
+  public totalSoftgoals: Softgoal[]
+
 
   //DATATABLE
   @ViewChild(MatPaginator) paginator: MatPaginator
@@ -106,10 +111,10 @@ export class ProjectComponent implements OnInit {
       this.searchByName = false
       this.totalAreas = []
       this.totalProjects = []
+      this.totalStakeholders = []
       this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
       this.getAreas()
-
-
+      
 
     }
     else
@@ -132,8 +137,9 @@ export class ProjectComponent implements OnInit {
       this.totalProjects = this.normalizeData(data)
 
       this.totalProjects = this.totalProjects.filter(project => this.userInfo.id === parseInt(project.users_id))
-
+      
       this.idToString()
+
     })
   }
 
@@ -158,7 +164,6 @@ export class ProjectComponent implements OnInit {
             if (!this.sourcePorNombre) { return; }
             this.sourcePorNombre.filter = this.filter.nativeElement.value;
           });
-
   }
 
   deleteProject(pro)
@@ -306,9 +311,7 @@ export class ProjectComponent implements OnInit {
       this.getAreas();
     });
   }
-
-
-
+ 
   ngOnInit() {
   }
 

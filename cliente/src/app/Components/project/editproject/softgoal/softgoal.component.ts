@@ -273,9 +273,6 @@ export class SoftgoalComponent implements OnInit {
   }
 
 
-
-
-
   ngOnInit() {
   }
 

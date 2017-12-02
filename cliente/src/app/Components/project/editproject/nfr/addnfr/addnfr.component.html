@@ -59,7 +59,7 @@
 
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Softgoal solicitante</ng-template>
+      <ng-template matStepLabel>Subgoal solicitante</ng-template>
 
 
 
@@ -67,7 +67,7 @@
         <div class="col s11">
 
           <mat-form-field style="width: 100%">
-            <mat-select placeholder="Seleccione un Softgoal" formControlName="secondCtrl" required [(ngModel)]="newSoftgoalnfr.softgoals_id" (ngModelChange)="checkSigthInfo()" >
+            <mat-select placeholder="Seleccione un Subgoal" formControlName="secondCtrl" required [(ngModel)]="newSoftgoalnfr.softgoals_id" (ngModelChange)="checkSigthInfo()" >
               <mat-option *ngFor="let softgoal of totalSoftgoals" [value]="softgoal.id">
                 {{ softgoal.name }}
               </mat-option>

@@ -93,7 +93,7 @@ class adminmodule extends Seeder
 
         DB::table('nfrs')->insert([
             'name' => 'Capacidad para reconocer su adecuación',
-            'description' => 'apacidad del producto que permite al usuario entender si el software es adecuado para sus necesidades.',
+            'description' => 'Capacidad del producto que permite al usuario entender si el software es adecuado para sus necesidades.',
             'categories_id' => 4
         ]);
 
@@ -245,14 +245,14 @@ class adminmodule extends Seeder
         ]);
 
         DB::table('relevances')->insert([
-            'name' => 'Critico',
-            'description' => 'Es critico, por lo que debe ser considerado cono alcanzable e incluido en las proyecciones de tiempo.',
+            'name' => 'Crítico',
+            'description' => 'Es crítico, por lo que debe ser considerado cono alcanzable e incluido en las proyecciones de tiempo.',
             'weigth' => 2
         ]);
 
         DB::table('relevances')->insert([
-            'name' => 'Muy critico',
-            'description' => 'Es demasiado critico, por lo que debe ser considerado como requisito a satisfacer, ya que sin esto no da valor agregado.',
+            'name' => 'Muy crítico',
+            'description' => 'Es demasiado crítico, por lo que debe ser considerado como requisito a satisfacer, ya que sin esto no da valor agregado.',
             'weigth' => 3
         ]);
 
@@ -287,23 +287,28 @@ class adminmodule extends Seeder
         ]);
 
         DB::table('professions')->insert([
-            'name' => 'Ingeniero Civil ',
+            'name' => 'Ingeniero Civil',
             'description' => 'Ingeniero Civil'
+        ]);
+
+        DB::table('professions')->insert([
+            'name' => 'Otra ',
+            'description' => 'Profesión que no esté mencionada'
         ]);
 
         DB::table('areas')->insert([
             'name' => 'Salud',
-            'description' => 'El area de la salud, esta orientada a Hospitales, Clinicas, Consultorios, entre otros.'
+            'description' => 'El área de la salud, está orientada a Hospitales, Clínicas, Consultorios, entre otros.'
         ]);
 
         DB::table('areas')->insert([
-            'name' => 'Educacion',
-            'description' => 'El area de la educacion, esta orientada a Colegios, Liceos, Universidades, entre otros.'
+            'name' => 'Educación',
+            'description' => 'El área de la educación, está orientada a Colegios, Liceos, Universidades, entre otros.'
         ]);
 
         DB::table('areas')->insert([
-            'name' => 'Publico',
-            'description' => 'El area de la publico, esta orientada a Municipalidades, licitaciones municipales, entre otros.'
+            'name' => 'Público',
+            'description' => 'El área pública, está orientada a Municipalidades, licitaciones municipales, entre otros.'
         ]);
 
 

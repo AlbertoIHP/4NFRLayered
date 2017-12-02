@@ -23,7 +23,7 @@ class commonusermodule extends Seeder
 
         DB::table('projects')->insert([
             'name' => 'Municipalidad Valdivia',
-            'description' => 'ERP para la gestion de la Municipalidad',
+            'description' => 'ERP para la gestión de la Municipalidad',
             'time' => '22:14',
             'date' => '22-01-2014',
             'users_id' => 1,

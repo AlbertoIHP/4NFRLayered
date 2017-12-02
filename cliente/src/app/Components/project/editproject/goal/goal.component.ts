@@ -88,8 +88,6 @@ export class GoalComponent implements OnInit {
 
     this.getStakeholders()
 
-
-
   }
 
   getStakeholders()
@@ -230,10 +228,6 @@ export class GoalComponent implements OnInit {
   {
     this.searchByName = !this.searchByName
   }
-
-
-
-
 
   ngOnInit() {
   }

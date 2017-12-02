@@ -21,10 +21,10 @@ export class AddsoftComponent implements OnInit {
   public totalGoals: any
   public softgoalService: any
   private position = 'above';
-  private infoNombre = "¿Qué es un softgoal? Un softgoal es es una característica específica que se puede desprender de un goal en particular. Por ejemplo: Goal: Agendar uso de quincho. Sofgoal: Agendar uso de quincho y ofrecer servicios adicionales";
-  private infoDescripcion = "¿Para que describir un softgoal? Sirve para ser más específico con respecto al softgoal escrito ya que mediante su nombre hay información que quedará fuera. Por ejemplo: Agendar el uso de quincho tiene la posibilidad de agregar otros servicios para su utilización, por ejemplo, servicio de aseo posterior a su uso";
-  private infoGoal = "¿Por qué seleccionar un Goal? Cada softgoal está relacionado directamente con un goal, puesto que un sofgoal es una especificación de un goal más genérico. Por ejemplo: Agendar uso de quincho";
-  private infoRelevancia = "¿Qué es la relevancia de un softgoal? Permite saber lo importante que es para el sistema de software este softgoal. Por ejemplo: Relevante";
+  private infoNombre = "¿Qué es un subgoal? Un subgoal es es una característica específica que se puede desprender de un goal en particular. Por ejemplo: Goal: Agendar uso de quincho. Sofgoal: Agendar uso de quincho y ofrecer servicios adicionales";
+  private infoDescripcion = "¿Para que describir un subgoal? Sirve para ser más específico con respecto al subgoal escrito ya que mediante su nombre hay información que quedará fuera. Por ejemplo: Agendar el uso de quincho tiene la posibilidad de agregar otros servicios para su utilización, por ejemplo, servicio de aseo posterior a su uso";
+  private infoGoal = "¿Por qué seleccionar un Goal? Cada subgoal está relacionado directamente con un goal, puesto que un sofgoal es una especificación de un goal más genérico. Por ejemplo: Agendar uso de quincho";
+  private infoRelevancia = "¿Qué es la relevancia de un subgoal? Permite saber lo importante que es para el sistema de software este softgoal. Por ejemplo: Relevante";
 
   constructor(
     private _formBuilder: FormBuilder,

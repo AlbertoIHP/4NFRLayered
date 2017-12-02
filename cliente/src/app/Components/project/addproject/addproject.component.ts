@@ -76,6 +76,7 @@ export class AddprojectComponent implements OnInit {
 
   addProject()
   {
+    console.log(this.newProject.deadline)
     var splitted = this.newProject.deadline.toString().split(" ")
     var month = splitted[1]
     var day = splitted[2]

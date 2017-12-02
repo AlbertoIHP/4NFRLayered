@@ -11,7 +11,6 @@ import { ProfessionService } from '../../../../Services/profession.service'
 import { AddstakeComponent } from './addstake/addstake.component'
 import { EditstakeComponent } from './editstake/editstake.component'
 
-
 //Datatable
 import {DataSource} from '@angular/cdk/collections';
 import {MatPaginator} from '@angular/material';
@@ -83,9 +82,7 @@ export class StakeholderComponent implements OnInit {
     this.totalStakeholders = []
     this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
     this.projectInfo = JSON.parse(localStorage.getItem('currentProject'))
-
     this.getProfessions()
-
 
   }
 
@@ -105,6 +102,7 @@ export class StakeholderComponent implements OnInit {
       this.idToString()
 
     })
+
   }
 
   idToString()
@@ -131,6 +129,8 @@ export class StakeholderComponent implements OnInit {
             this.sourcePorNombre.filter = this.filter.nativeElement.value;
           });
 
+
+
   }
 
   openAddModal()
@@ -148,10 +148,6 @@ export class StakeholderComponent implements OnInit {
       }
     });
   }
-
-
-
-
 
 
   openEditModal(pro)
@@ -191,7 +187,6 @@ export class StakeholderComponent implements OnInit {
   {
     this.searchByName = !this.searchByName
   }
-
 
   ngOnInit() {
   }
